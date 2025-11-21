@@ -15,7 +15,7 @@ import Button from "../atoms/Button.astro";
   class="relative w-full h-screen bg-[url('/src/assets/images/boxGrid.svg')] bg-no-repeat bg-center bg-cover"
 >
 
-    <div class="max-w-4xl mx-auto flex flex-col justify-center items-center space-y-10 mt-22">
+    <div class="max-w-4xl mx-auto flex flex-col md:justify-center md:items-center max-sm:space-y-6 space-y-10 mt-22 max-md:mt-10">
     
         <Pill label="Trusted by Startups & Freelancers">
             <Image
@@ -26,17 +26,17 @@ import Button from "../atoms/Button.astro";
             />
         </Pill>
 
-        <div class="flex flex-col justify-center items-center text-center space-y-6">
+        <div class="flex flex-col justify-center items-center md:text-center space-y-6 max-sm:space-y-4">
             
             <div class="space-y-2">
-                <h1 class="text-desktop-h1 font-medium leading-18 text-neutral">
+                <h1 class="max-sm:text-mobile-h1 text-desktop-h1 font-medium leading-18 max-sm:leading-16 max-sm:font-semibold text-neutral">
                 Websites 
 
                     <span class="text-primary-orange relative inline-block">
                         
                         That Work
 
-                        <svg class="absolute -bottom-3 left-2 w-full" width="284" height="18" viewBox="0 0 284 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg class="absolute -bottom-3 max-sm:-bottom-2 max-sm:left-1 left-2 w-full" width="284" height="18" viewBox="0 0 284 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M2.00037 15.5026C92.0004 -1.99726 191.5 -2.99731 282 15.5026" stroke="#F39C12" stroke-width="4" stroke-linecap="round"/>
                         </svg>
 
@@ -46,12 +46,16 @@ import Button from "../atoms/Button.astro";
                     for You and Your Customers.
                 </h1>
 
-                <p class="max-w-xl mx-auto text-neutral font-light text-xl">
+                <div class="lg:px-28">
+                    <p class="text-neutral font-light text-xl">
                     We build fast, responsive, and memorable websites designed to grow your business and make your ideas real.
-                </p>
+                    </p>
+                </div>
+
             </div>
 
-            <div class="flex gap-4">
+            <div class="flex max-md:flex-col max-md:w-full gap-4">
+
                 <Button
                 href="#contact" 
                 label="Get a free Quote" 
@@ -67,7 +71,7 @@ import Button from "../atoms/Button.astro";
                 <Button
                 href="#services" 
                 label="Our Services" 
-                classes="rounded-full border border-neutral/20 px-6 py-3 flex justify-center items-center gap-2 bg-bg text-neutral shadow-sm hover:bg-bg/40 group"/>
+                classes="rounded-full border border-neutral/20 px-6 py-3 flex justify-center items-center gap-2 bg-bg text-neutral shadow-sm hover:bg-primary-orange/10 group"/>
             </div>
 
 
