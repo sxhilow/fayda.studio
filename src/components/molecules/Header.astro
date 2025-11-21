@@ -12,7 +12,7 @@ import Button from "../atoms/Button.astro"
 
 <header class="max-w-6xl mx-auto py-6 flex justify-between items-center">
 
-    <div class="relative">
+    <div class="">
         <a href="#">
             <Image
             src={LogoBlack}
@@ -69,7 +69,7 @@ import Button from "../atoms/Button.astro"
             />
         </button>
 
-        <nav id="mobile-menu" class="hidden left-0 w-full h-screen absolute px-5">
+        <nav id="mobile-menu" class="hidden bg-bg left-0 w-full h-full absolute px-5 mt-2 z-50 transform transition-transform translate-y-full duration-300">
             <ul class=" mt-10 space-y-3">
 
                 {
@@ -116,11 +116,28 @@ import Button from "../atoms/Button.astro"
 
     function toggleMobileMenu(show){
         if(show){
+            // OPEN
             mobileMenu.classList.remove("hidden");
+
+            // force repaint
+            mobileMenu.getBoundingClientRect();
+
+            mobileMenu.classList.remove("translate-y-full");
+            mobileMenu.classList.add("translate-y-0");
+
             menuIcon.classList.add("hidden");
-            closeIcon.classList.remove("hidden")
-        }else{
-            mobileMenu.classList.add("hidden");
+            closeIcon.classList.remove("hidden");
+
+        } else {
+            // CLOSE
+            mobileMenu.classList.remove("translate-y-0");
+            mobileMenu.classList.add("translate-y-full");
+
+            // waiting for the animation to complete
+            setTimeout(() => {
+                mobileMenu.classList.add("hidden");
+            }, 300);
+
             menuIcon.classList.remove("hidden");
             closeIcon.classList.add("hidden");
         }
@@ -128,7 +145,7 @@ import Button from "../atoms/Button.astro"
 
     menuBtn.addEventListener("click", () => {
         const isHidden = mobileMenu.classList.contains("hidden");
-        toggleMobileMenu(isHidden);
+            toggleMobileMenu(isHidden);
         } 
     )
 
