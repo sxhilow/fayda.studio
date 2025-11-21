@@ -1,0 +1,172 @@
+---
+import { Image } from "astro:assets"
+
+import LogoBlack from "../../assets/icons/LogoBlack.svg"
+import Call from "../../assets/icons/Call.svg"
+import Burger from "../../assets/icons/Burger.svg"
+import Cross from "../../assets/icons/Cross.svg"
+
+import { navItems } from "../../constant"
+import Button from "../atoms/Button.astro"
+---
+
+<header class="max-w-6xl mx-auto py-6 flex justify-between items-center">
+
+    <div class="max-md:px-5 relative">
+        <a href="#">
+            <Image
+            src={LogoBlack}
+            alt="Logo"
+            />
+        </a>
+    </div>
+
+  
+    <nav class="flex justify-center items-center gap-10 max-md:hidden">
+        {
+            navItems.map((item) => (
+                <Button 
+                href={item.href} 
+                label={item.label} 
+                classes="text-neutral font-light uppercase hover:text-primary-orange"
+                underlineAnimation="true"
+                data-activeLink 
+                />
+            ))
+        }
+    </nav>
+
+
+    <div>
+        <Button
+        href="#contact"
+        label="Book a Call"
+        iconPosition="left"
+        classes="rounded-full px-6 py-3 flex justify-center items-center gap-2 bg-neutral text-neutral2 max-md:hidden hover:bg-neutral/90"
+        >
+            <Image 
+            src={Call}
+            alt={"Call"}
+            slot={"icon"}
+            />
+        </Button>
+    </div>
+
+    <div class="md:hidden px-5">
+
+        <button id="menu-btn" class="text-white">
+            <Image
+                id="menu-icon"
+                src={Burger}
+                alt="menu"
+                class="w-10 h-10"
+            />
+            <Image
+                id="close-icon"
+                src={Cross}
+                alt="close"
+                class="hidden w-6 h-6"
+            />
+        </button>
+
+        <nav id="mobile-menu" class="hidden left-0 w-full h-screen absolute px-5">
+            <ul class=" mt-10 space-y-3">
+
+                {
+                    navItems.map(item => (
+                        <a href={item.href} class="group uppercase">
+                            <li class="py-3 hover:bg-primary-orange/10 transition duration-150 px-2 rounded-sm">
+                                <span class="group-hover:text-primary-orange transition duration-150 ">
+                                    
+                                    {item.label}
+
+                                </span>
+                                
+                            </li>
+                        </a>
+                    ))
+                }
+
+                <li class="mt-5">
+                    <Button
+                        href="#contact"
+                        label="Book a Call"
+                        iconPosition="left"
+                        classes="rounded-full w-full py-3 flex justify-center items-center gap-2 bg-neutral text-neutral2 hover:bg-neutral/90"
+                    >
+                        <Image 
+                        src={Call}
+                        alt={"Call"}
+                        slot={"icon"}
+                        />
+                    </Button>
+                </li>
+
+            </ul>
+            
+            
+        </nav>
+
+    </div>
+
+</header>
+
+<script is:inline>
+    // const navbar = document.getElementById("navbar")
+
+    const menuBtn = document.getElementById("menu-btn")
+    const mobileMenu = document.getElementById("mobile-menu")
+    const menuIcon = document.getElementById("menu-icon")
+    const closeIcon = document.getElementById("close-icon")
+
+    function toggleMobileMenu(show){
+        if(show){
+            mobileMenu.classList.remove("hidden");
+            menuIcon.classList.add("hidden");
+            closeIcon.classList.remove("hidden")
+        }else{
+            mobileMenu.classList.add("hidden");
+            menuIcon.classList.remove("hidden");
+            closeIcon.classList.add("hidden");
+        }
+    }
+
+    menuBtn.addEventListener("click", () => {
+        const isHidden = mobileMenu.classList.contains("hidden");
+        toggleMobileMenu(isHidden);
+        } 
+    )
+
+    document.querySelectorAll("#mobile-menu a").forEach(link => {
+        link.addEventListener("click", () => {
+            toggleMobileMenu(false);
+        })
+
+        
+    })
+
+    function highlightLink(){
+        const currentHash = window.location.hash || '#';
+
+        
+
+        if(!currentHash){
+            currentHash = window.location.pathname
+        }
+
+        console.log(currentHash);
+
+        document.querySelectorAll('[data-activeLink]').forEach(link => {
+            if(link.getAttribute('href') === currentHash){
+                link.setAttribute('aria-current', 'page');
+            }else{
+                link.removeAttribute('aria-current');
+            }
+        })
+
+
+    }
+
+    window.addEventListener('load', highlightLink)
+    window.addEventListener('hashchange', highlightLink)
+</script>

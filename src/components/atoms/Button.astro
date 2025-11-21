@@ -1,0 +1,21 @@
+---
+const {
+    href,
+    label,
+    classes,
+    iconPosition = "right",
+    underlineAnimation = false,
+    ...rest
+} = Astro.props
+---
+
+<a href={href} class={`${classes} transition duration-150 aria-[current=page]:text-primary-orange group`} {...rest}>
+    {iconPosition === "left" && <slot name="icon"/>}
+    {label}
+    {iconPosition === "right" && <slot name="icon"/>}
+
+    {
+        underlineAnimation && <span class="block max-w-0 group-hover:max-w-full transition-all duration-300 h-0.5 bg-primary-orange"></span>
+    }
+
+</a>
