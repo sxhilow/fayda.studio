@@ -12,7 +12,7 @@ import Button from "../atoms/Button.astro"
 
 <header class="max-w-6xl mx-auto py-6 flex justify-between items-center">
 
-    <div class="max-md:px-5 relative">
+    <div class="relative">
         <a href="#">
             <Image
             src={LogoBlack}
@@ -52,7 +52,7 @@ import Button from "../atoms/Button.astro"
         </Button>
     </div>
 
-    <div class="md:hidden px-5">
+    <div class="md:hidden">
 
         <button id="menu-btn" class="text-white">
             <Image
@@ -75,13 +75,8 @@ import Button from "../atoms/Button.astro"
                 {
                     navItems.map(item => (
                         <a href={item.href} class="group uppercase">
-                            <li class="py-3 hover:bg-primary-orange/10 transition duration-150 px-2 rounded-sm">
-                                <span class="group-hover:text-primary-orange transition duration-150 ">
-                                    
-                                    {item.label}
-
-                                </span>
-                                
+                            <li class="py-3">
+                                {item.label}
                             </li>
                         </a>
                     ))
