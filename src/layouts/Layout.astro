@@ -36,11 +36,20 @@ const {
 
 	</head>
 	<body class="">
-		<Header/>
-			<main class="flex flex-col"> 
+
+		<div class="px-5">
+			<Header/>
+		</div>
+		
+
+			<main class="flex flex-col min-h-screen"> 
 				<slot />
 			</main>
-		<Footer/>
+		
+		<div class="bg-neutral px-5">
+			<Footer/>
+		</div>
+		
 	</body>
 </html>
 
