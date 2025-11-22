@@ -33,6 +33,10 @@
     .bg-active{
         background-color: var(--card-hover-bg);
     }
+
+    .three-gradient{
+        background-image: linear-gradient(to top right, #28AFFA, #FF6363, #F39C12);
+    }
 }
 
 body{
