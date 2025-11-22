@@ -28,3 +28,45 @@ export const services = [
     bg: "#E4D8FF"
   },
 ]
+
+export const plans = [
+  {
+    tag: "Get online fast",
+    title: "Launch Plan",
+    description: "Ideal for Small businesses or solo founders who just need a clean, fast, professional site that gets them out there and looking legit.",
+    features: [
+      "A responsive website that looks great on any device",
+      "Conversion-focused design that helps visitors reach out or book you",
+      "Simple SEO setup so Google actually finds you",
+      "Copywriting that sounds like you, not a bot",
+      "You'll see your first draft in days, not weeks"
+    ],
+    tagColors: "bg-[#E8F5E9] border-[#A5D6A7] text-[#2E7D32]"
+  },
+  {
+    tag: "Grow your reach",
+    title: "Growth Plan",
+    description: "Ideal for Businesses that already have traction and want to manage their content, grow visibility, and strengthen their brand identity.",
+    features: [
+      "A CMS (Content Management System) so you can update content easily",
+      "Branded design system for consistent visuals and tone",
+      "Blog, services, or case study pages — all connected and easy to manage",
+      "Advanced SEO setup with analytics and site structure",
+      "Support for updates and content improvements after launch"
+    ],
+    tagColors: "bg-[#E3F2FD] border-[#90CAF9] text-[#1565C0]"
+  },
+  {
+    tag: "Sell without stress",
+    title: "Scale Plan",
+    description: "Ideal for Brands ready to expand into e-commerce, membership, or custom web app territory.",
+    features: [
+      "Full e-commerce or web app setup (Shopify, custom, or API-integrated)",
+      "Email automation and sales tracking built right in",
+      "Optimized checkout flow that turns browsers into buyers",
+      "Analytics dashboard for clear performance insights",
+      "Ongoing maintenance and scaling support"
+    ],
+    tagColors: "bg-[#FFF3E0] border-[#FFB74D] text-[#EF6C00]"
+  }
+]

@@ -1,0 +1,61 @@
+---
+import { Image } from "astro:assets";
+import Check from "../../assets/icons/Check.svg"
+
+const {
+    tag,
+    title,
+    description,
+    features = [],
+    tagClass,
+} = Astro.props;
+
+
+---
+
+<div class="shadow-sm border border-neutral3 rounded-lg flex flex-col p-6 max-sm:py-10 hover:scale-105 transition duration-150">
+
+    <div class="flex flex-col gap-4 text-neutral">
+
+        <span class={`self-start text-xs font-light py-2 px-3 rounded-full border ${tagClass}`}>
+            {tag}
+        </span>
+
+
+        <div class="flex flex-col">
+            <h1 class="text-desktop-h4 font-semibold text-neutral">
+                {title}
+            </h1>
+            <p class="text-desktop-p font-light md:min-h-24">
+                {description}
+            </p>
+        </div>
+
+        <div class="flex flex-wrap flex-col">
+            <span class="font-semibold">What's inside:</span>
+
+            <div class="mt-4 space-y-4">
+
+                {
+                    features.map((feat:string) => (
+                        <div class="flex gap-3 text-sm">
+
+                            <Image
+                                src={Check}
+                                alt="Icon"
+                            />
+
+                            <span>
+                                {feat}
+                            </span>
+
+                        </div>
+                    ))
+                }
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
