@@ -29,6 +29,12 @@
 
 }
 
+@layer utilities{
+    .bg-active{
+        background-color: var(--card-hover-bg);
+    }
+}
+
 body{
     background-color: var(--color-bg);
     font-family: var(--font-base);
