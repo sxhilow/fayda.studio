@@ -12,7 +12,7 @@ import Button from "../atoms/Button.astro"
 
 <header class="max-w-6xl mx-auto py-6 flex justify-between items-center">
 
-    <div class="">
+    <div class="flex-1">
         <a href="#">
             <Image
             src={LogoBlack}
@@ -22,7 +22,7 @@ import Button from "../atoms/Button.astro"
     </div>
 
   
-    <nav class="flex justify-center items-center gap-10 max-md:hidden">
+    <nav class="flex justify-center items-center gap-10 max-md:hidden flex-1">
         {
             navItems.map((item) => (
                 <Button 
@@ -37,7 +37,7 @@ import Button from "../atoms/Button.astro"
     </nav>
 
 
-    <div>
+    <div class="flex-1 flex justify-end ">
         <Button
         href="#contact"
         label="Book a Call"
@@ -107,6 +107,7 @@ import Button from "../atoms/Button.astro"
 </header>
 
 <script is:inline>
+
     
     const menuBtn = document.getElementById("menu-btn")
     const mobileMenu = document.getElementById("mobile-menu")
@@ -160,26 +161,22 @@ import Button from "../atoms/Button.astro"
         
     })
 
-    function highlightLink(){
-        const currentHash = window.location.hash || '#';
-
+    function highlightLink() {
         
+        let current = window.location.hash 
+            ? `/${window.location.hash}`
+            : window.location.pathname;
 
-        if(!currentHash){
-            currentHash = window.location.pathname
-        }
+        if (current === "/") current = "/#";
 
-        console.log(currentHash);
 
         document.querySelectorAll('[data-activeLink]').forEach(link => {
-            if(link.getAttribute('href') === currentHash){
+            if (link.getAttribute('href') === current) {
                 link.setAttribute('aria-current', 'page');
-            }else{
+            } else {
                 link.removeAttribute('aria-current');
             }
-        })
-
-
+        });
     }
 
     window.addEventListener('load', highlightLink)
