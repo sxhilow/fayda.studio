@@ -43,3 +43,30 @@ body{
     background-color: var(--color-bg);
     font-family: var(--font-base);
 }
+
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .animate-fadeIn {
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+.details-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease-in-out, opacity 0.15s ease-in-out;
+  opacity: 0;
+}
+
+details[open] .details-content {
+  max-height: 500px;
+  opacity: 1; 
+}
