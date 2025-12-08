@@ -1,9 +1,17 @@
 ---
 import Button from "../atoms/Button.astro"
 
+const {
+  textBefore,
+  textAfter,
+  highlight,
+  buttonText,
+  buttonHref
+} = Astro.props
+
 ---
 
-<div class="max-w-6xl w-full mx-auto mt-20 relative overflow-hidden h-[233px]">
+<div class="max-w-6xl w-full mx-auto relative overflow-hidden h-[233px]">
   
   <!-- SVG background -->
   <svg
@@ -29,11 +37,11 @@ import Button from "../atoms/Button.astro"
 
   <div class="absolute inset-0 flex max-sm:flex-col items-center md:justify-between md:px-30 max-sm:py-10 text-center gap-6 md:gap-10">
     <h1 class="text-neutral text-2xl md:text-desktop-h4 font-semibold max-w-md">
-      Not sure where to start? Let’s <span class="text-primary-orange">figure</span> it out together
+      {textBefore} <span class="text-primary-orange">{highlight}</span> {textAfter}
     </h1>
     <Button
-        href="#contact"
-        label="Book a quick chat"
+        href={buttonHref}
+        label={buttonText}
         classes="flex justify-center items-center rounded-full px-6 py-3 opacity-60 three-gradient text-white"
         >
         <svg slot="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

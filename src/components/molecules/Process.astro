@@ -1,0 +1,40 @@
+---
+const {
+    number,
+    title,
+    tagline,
+    steps = [],
+    classes
+} = Astro.props
+---
+
+<div class={` ${classes} w-full flex items-center justify-between gap-8 md:gap-20 py-20`}>
+
+        <div class="text-6xl md:text-8xl text-neutral3 shrink-0">
+            {number}
+        </div>
+
+        <div class="flex-1 min-w-0 space-y-2">
+
+            <div class="md:leading-9">
+                <h1 class="text-desktop-h4 font-medium">{title}</h1>
+                <p class="font-light">{tagline}</p>
+            </div>
+
+            <span class="font-semibold">Covers:</span>
+            <ul class="mt-2 font-light">
+                {
+                    steps.map((step:any) => (
+                        <li class="flex items-center gap-3 leading-tight">
+                            <svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                             <circle cx="4" cy="4" r="4" fill="#F39C12"/>
+                            </svg>
+                            <span>{step}</span>
+                        </li>
+                    ))
+                }
+            </ul>
+
+        </div>
+
+    </div>
