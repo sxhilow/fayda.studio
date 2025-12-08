@@ -42,7 +42,7 @@ const {
 		</div>
 		
 
-			<main class="flex flex-col min-h-screen px-5"> 
+			<main class="flex flex-col min-h-screen"> 
 				<slot />
 			</main>
 		
@@ -55,7 +55,7 @@ const {
 			const navbar = document.getElementById("navbar")
 
 			window.addEventListener("scroll", () => {
-				if(window.scrollY > 20){
+				if(window.scrollY > 10){
 					navbar.classList.add("bg-bg", "shadow-sm")
 				}else{
 					navbar.classList.remove("bg-bg", "shadow-sm")
