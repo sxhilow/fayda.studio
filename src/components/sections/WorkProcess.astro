@@ -17,8 +17,8 @@ import Process from "../molecules/Process.astro";
             />
         </Pill>
         <div class="text-center -space-y-2 max-w-3xl mx-auto">
-            <h1 class="text-desktop-h3 text-neutral">The <span class="text-primary-orange">Fayda</span> Studio Process</h1>
-            <p class="text-lg md:text-xl font-light text-neutral">From day one, you see every step. No guesswork, just a clean, high-quality product delivered on time.</p>
+            <h1 class="process-h1 text-desktop-h3 text-neutral">The <span class="text-primary-orange">Fayda</span> Studio Process</h1>
+            <p class="process-p text-lg md:text-xl font-light text-neutral">From day one, you see every step. No guesswork, just a clean, high-quality product delivered on time.</p>
         </div>
     </div>
 
@@ -33,3 +33,8 @@ import Process from "../molecules/Process.astro";
     </div>
 
 </section>
+
+<script>
+    import { workProcessAnimations } from "../../animations/Process";
+    workProcessAnimations();
+</script>

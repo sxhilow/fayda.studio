@@ -3,6 +3,7 @@ import { Image } from "astro:assets";
 
 import Rocket from "../../assets/icons/Rocket.svg"
 import Right from "../../assets/icons/Right.svg"
+import HeroImage from "../../assets/images/bg-grid.svg"
 
 import Pill from "../atoms/Pill.astro";
 import Button from "../atoms/Button.astro";
@@ -12,10 +13,27 @@ import Button from "../atoms/Button.astro";
 
 <section
   id="#"
-  class="relative w-full h-screen bg-[url('/src/assets/images/bg-grid.svg')] bg-no-repeat bg-center bg-cover px-5"
+  class="relative w-full h-screen px-5 overflow-hidden -mt-16"
 >
 
-    <div class="max-w-4xl mx-auto flex flex-col md:justify-center md:items-center max-sm:space-y-6 space-y-10 mt-22 max-md:mt-10">
+    <Image 
+        src={HeroImage}
+        alt="Hero"
+        class="absolute inset-0 w-full h-full object-cover md:hidden"
+    />
+
+
+    <video 
+        autoplay
+        loop
+        muted
+        playsinline
+        data-desktop-only
+        class="absolute inset-0 w-full h-full object-cover hidden md:block scale-105">
+        <source src="/hero-bg.webm" type="video/webm" media="(min-width: 768px)"/>
+    </video>
+
+    <div class="relative z-40 max-w-4xl mx-auto flex flex-col md:justify-center md:items-center max-sm:space-y-6 space-y-10 mt-38 max-md:mt-20">
     
         <Pill label="Trusted by Startups & Freelancers">
             <Image
@@ -29,7 +47,7 @@ import Button from "../atoms/Button.astro";
         <div class="flex flex-col justify-center items-center md:text-center space-y-6 max-sm:space-y-4">
             
             <div class="space-y-2">
-                <h1 class="max-sm:text-mobile-h1 text-desktop-h1 font-medium leading-18 max-sm:leading-16 max-sm:font-semibold text-neutral">
+                <h1 class="hero-title max-sm:text-mobile-h1 text-desktop-h1 font-medium leading-18 max-sm:leading-16 max-sm:font-semibold text-neutral">
                 Websites 
 
                     <span class="text-primary-orange relative inline-block">
@@ -47,7 +65,7 @@ import Button from "../atoms/Button.astro";
                 </h1>
 
                 <div class="lg:px-28">
-                    <p class="text-neutral font-light text-xl">
+                    <p class="hero-subtitle text-neutral font-light text-xl">
                     We build fast, responsive, and memorable websites designed to grow your business and make your ideas real.
                     </p>
                 </div>
@@ -79,4 +97,14 @@ import Button from "../atoms/Button.astro";
         
     </div>
 
+
 </section>
+
+<script>
+
+    import { heroAnimation } from "../../animations/Hero";
+    heroAnimation();
+
+</script>
+
+

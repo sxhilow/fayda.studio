@@ -5,21 +5,21 @@ import ServiceDetails from "../molecules/ServiceDetails.astro"
 import CTA from "../molecules/CTA.astro"
 import { detailedServices } from "../../constant"
 ---
-<section class="flex flex-col my-10 md:my-16">
+<section class="flex flex-col">
 
-    <div class="bg-neutral py-10 flex flex-col justify-center items-center px-5">
+    <div class="services-header bg-neutral py-10 flex flex-col justify-center items-center px-5">
 
-        <div class="flex justify-center items-center">
-            <h1 class="inline-block text-transparent [-webkit-text-stroke:1px_#F39C12] text-7xl lg:text-9xl">
+        <div class=" flex justify-center items-center">
+            <h1 class="services-h1 inline-block text-transparent [-webkit-text-stroke:1px_#F39C12] text-7xl lg:text-9xl">
                 Services
             </h1>
 
-            <h3 class="absolute max-sm:text-mobile-h2 text-desktop-h2 font-bold text-primary-orange mt-5">
+            <h3 class="services-h3 absolute max-sm:text-mobile-h2 text-desktop-h2 font-bold text-primary-orange mt-5">
                 Services
             </h3>
         </div>
 
-        <p class="text-neutral2 max-w-3xl mx-auto text-center font-light">
+        <p class="services-p text-neutral2 max-w-3xl mx-auto text-center font-light">
             Our team combines creativity, technology, and strategy to deliver websites and web apps that look amazing and perform flawlessly.
         </p>
 
@@ -52,3 +52,10 @@ import { detailedServices } from "../../constant"
 
 
 </section>
+
+<script>
+    import { serviceAnimation } from "../../animations/Service";
+    import { ctaAnimations } from "../../animations/CTA";
+    serviceAnimation();
+    ctaAnimations();
+</script>
