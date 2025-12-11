@@ -19,8 +19,8 @@ export default function jsonLDGenerator({
     "name": title,
     "description": description,
     "url": url,
-    "logo": `${url}${image.src}`,
-    "image": `${url}${image.src}`,
+    "logo": new URL(image.src, url).toString(),
+    "image": new URL(image.src, url).toString(),
     "areaServed": "ZA",
     "address": {
       "@type": "PostalAddress",
