@@ -11,26 +11,35 @@ import Button from "../atoms/Button.astro";
 
 ---
 
+
 <section
   id="#"
   class="relative w-full h-screen px-5 overflow-hidden -mt-16"
 >
 
-    <Image 
+    <picture class="absolute inset-0 w-full h-full md:hidden">
+        <Image 
         src={HeroImage}
         alt="Hero"
-        class="absolute inset-0 w-full h-full object-cover md:hidden"
-    />
+        class="w-full h-full object-cover"
+        loading="eager"
+        />
+  </picture>
 
-
-    <video 
+    <video
         autoplay
-        loop
         muted
+        loop
         playsinline
-        data-desktop-only
-        class="absolute inset-0 w-full h-full object-cover hidden md:block scale-105">
-        <source src="/hero-bg.webm" type="video/webm" media="(min-width: 768px)"/>
+        preload="metadata"
+        poster="/images/hero-poster.png"
+        class="absolute inset-0 w-full h-full object-cover -z-10 hidden md:block scale-105"
+    >
+    
+    
+        <source src="/hero-bg.webm" type="video/webm" media="(min-width: 768px)" />
+        <source src="/hero-bg.mp4" type="video/mp4" media="(min-width: 768px)" />
+
     </video>
 
     <div class="relative z-40 max-w-4xl mx-auto flex flex-col md:justify-center md:items-center max-sm:space-y-6 space-y-10 mt-38 max-md:mt-20">
@@ -101,10 +110,14 @@ import Button from "../atoms/Button.astro";
 </section>
 
 <script>
+import { heroAnimation } from "../../animations/Hero";
+heroAnimation();
 
-    import { heroAnimation } from "../../animations/Hero";
-    heroAnimation();
-
+window.addEventListener('load', () => {
+  const video = document.querySelector('video');
+  if (video) {
+    video.load();  // Reloads sources fresh
+    video.play().catch(error => console.error('Video playback error:', error));  // Handles any autoplay policy issues
+  }
+});
 </script>
-
-
