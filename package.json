@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.17",
+    "@vercel/analytics": "^1.6.1",
     "astro": "^5.15.7",
     "astro-sitemap": "^1.0.0",
     "gsap": "^3.14.1",
