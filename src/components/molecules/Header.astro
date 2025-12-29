@@ -12,7 +12,7 @@ import Button from "../atoms/Button.astro"
 
 <header class="max-w-6xl mx-auto py-6 flex justify-between items-center">
 
-    <div class="flex-1">
+    <div class="flex-1/4">
         <a href="/#">
             <Image
             src={LogoBlack}
@@ -22,7 +22,7 @@ import Button from "../atoms/Button.astro"
     </div>
 
   
-    <nav class="flex justify-center items-center gap-10 max-md:hidden flex-1">
+    <nav class="flex justify-center items-center gap-8 max-md:hidden flex-2/4">
         {
             navItems.map((item) => (
                 <Button 
@@ -37,7 +37,7 @@ import Button from "../atoms/Button.astro"
     </nav>
 
 
-    <div class="flex-1 flex justify-end ">
+    <div class="flex-1/4 flex justify-end ">
         <Button
         href="/#contact"
         label="Book a Call"
