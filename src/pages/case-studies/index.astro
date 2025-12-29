@@ -1,0 +1,49 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import ProjectCard from "../../components/molecules/ProjectCard.astro";
+
+
+const allCaseStudies = await Astro.glob('./*.mdx');
+
+console.log(allCaseStudies);
+
+---
+
+<Layout title="Case Studies - Fayda Studio" description="Explore our portfolio of successful projects and case studies at Fayda Studio. See how we've helped businesses achieve their goals through innovative design and development solutions.">
+
+    <section class="px-2 space-y-2 mb-2">
+        <div class="services-header bg-neutral py-10 flex flex-col justify-center items-center rounded-xl px-4 max-sm:gap-2">
+
+            <div class=" flex justify-center items-center">
+                <h1 class="services-h1 inline-block text-transparent [-webkit-text-stroke:2px_#F39C12] text-6xl lg:text-9xl tracking-tight opacity-50 font-bold">
+                    Case Studies
+                </h1>
+
+                <h3 class="services-h3 absolute max-sm:text-mobile-h2 text-desktop-h2 font-bold text-primary-orange mt-5">
+                    Case Studies
+                </h3>
+            </div>
+
+            <p class="services-p text-mobile-p md:text-xl tracking-tighter text-neutral2 max-w-3xl mx-auto text-center font-light">
+                Discover the impact we've made through our case studies. See how our innovative solutions have driven success for our clients across various industries.
+            </p>
+
+
+        </div>
+
+        <div class="flex justify-center items-center w-full gap-8">
+        
+            {
+               allCaseStudies.map((caseStudy: any) => (
+                    <ProjectCard
+                        title={caseStudy.frontmatter.title}
+                        image={caseStudy.frontmatter.image}
+                        url={caseStudy.url}
+                    />
+                ))
+            }
+            
+        </div>
+    </section>
+
+</Layout>

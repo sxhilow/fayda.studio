@@ -6,9 +6,11 @@ import WebAppImage from "../assets/images/service-webapp.avif";
 export const navItems = [
   { href: '/#', label: 'Home' },
   { href: '/services', label: 'Services' },
+  { href: '/case-studies', label: 'Case Studies' },
   { href: '/#plans', label: 'Plans' },
   { href: '/#faqs', label: 'FAQs' },
 ];
+
 
 export const services = [
   {

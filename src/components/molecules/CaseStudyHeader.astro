@@ -1,0 +1,37 @@
+---
+import { Image } from "astro:assets";
+
+const {frontmatter} = Astro.props;
+
+const {title, description, headerImage} = frontmatter;
+---
+
+<div class="relative services-header flex flex-col justify-center items-center rounded-xl max-sm:gap-2 overflow-hidden max-h-64">
+
+    <!-- Overlay -->
+    <div class="absolute inset-0 bg-neutral/70 group-hover:bg-neutral/80 transition duration-300 z-20"></div>
+
+    <img
+        src={headerImage.src}
+        alt={headerImage.alt}
+        class="w-full h-full object-cover rounded-lg z-10"
+    />
+
+    <div class="absolute inset-0 z-30 flex flex-col justify-center items-center gap-2">
+        <div class="flex justify-center items-center">
+        <h1 class="services-h1 inline-block text-transparent [-webkit-text-stroke:2px_#F39C12] text-6xl lg:text-9xl tracking-tight opacity-50 font-bold">
+            {title}
+        </h1>
+
+        <h3 class="services-h3 absolute max-sm:text-mobile-h2 text-desktop-h2 font-bold text-primary-orange mt-5">
+            {title}
+        </h3>
+        </div>
+
+        <p class="services-p text-mobile-p md:text-xl max-sm:tracking-tighter text-neutral2 max-w-3xl mx-auto text-center font-light">
+            {description}
+        </p>
+    </div>
+
+
+</div>

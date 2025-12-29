@@ -1,0 +1,21 @@
+---
+const {title, image, url} = Astro.props;
+---
+
+<a href={url} class="block group">
+  <div class="relative rounded-xl overflow-hidden">
+    <!-- Overlay -->
+    <div class="absolute inset-0 bg-neutral/50 group-hover:bg-neutral/80 transition duration-300 z-20"></div>
+
+
+    <img
+      src={image.src}
+      alt={image.alt}
+      class="w-full h-full object-cover rounded-lg z-10"
+    />
+
+    <h3 class="absolute inset-0 flex items-center justify-center lg:opacity-0 group-hover:opacity-100 text-white text-mobile-h1 md:text-desktop-h1 font-bold transition-opacity duration-300 z-30">
+      {title}
+    </h3>
+  </div>
+</a>
