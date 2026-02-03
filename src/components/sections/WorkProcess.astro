@@ -1,37 +1,39 @@
 ---
-import Pill from "../atoms/Pill.astro";
-import WorkIcon from "../../assets/icons/Work.svg"
+import Pill from "@ui/Pill.astro";
+import WorkIcon from "../../assets/icons/Work.svg";
 import { Image } from "astro:assets";
-import { workProcess } from "../../constant";
-import Process from "../molecules/Process.astro";
+import { workProcess } from "../../data";
+import Process from "@ui/Process.astro";
 ---
 
 <section class="my-10 md:my-20 max-w-6xl mx-auto px-5">
-
     <div class="flex flex-col gap-8 justify-between items-center">
         <Pill label="Work Process">
-            <Image
-                src={WorkIcon}
-                alt={"Work"}
-                slot={"icon"}
-            />
+            <Image src={WorkIcon} alt={"Work"} slot={"icon"} />
         </Pill>
         <div class="text-center max-w-3xl mx-auto space-y-1">
-            <h1 class="process-h1 text-desktop-h3 text-neutral max-md:leading-12">The <span class="text-primary-orange">Fayda</span> Studio Process</h1>
-            <p class="process-p text-lg md:text-xl font-light text-neutral">From day one, you see every step. No guesswork, just a clean, high-quality product delivered on time.</p>
+            <h1
+                class="process-h1 text-desktop-h3 text-neutral max-md:leading-12"
+            >
+                The <span class="text-primary-orange">Fayda</span> Studio Process
+            </h1>
+            <p class="process-p text-lg md:text-xl font-light text-neutral">
+                From day one, you see every step. No guesswork, just a clean,
+                high-quality product delivered on time.
+            </p>
         </div>
     </div>
 
-
-   
     <div class="w-full mt-5">
         {
-            workProcess.map((item:any, index) => (
-                <Process classes={index < 3 ? "border-b border-primary-orange" : ""} {...item}/>
+            workProcess.map((item: any, index) => (
+                <Process
+                    classes={index < 3 ? "border-b border-primary-orange" : ""}
+                    {...item}
+                />
             ))
         }
     </div>
-
 </section>
 
 <script>

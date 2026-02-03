@@ -1,7 +1,9 @@
 ---
-
-import siteData from "../../constant/siteData.json";
-import jsonLDGenerator, { generateWebSiteSchema, generateServiceSchema } from "../../constant/jsonLD";
+import siteData from "../../data/siteData.json";
+import jsonLDGenerator, {
+  generateWebSiteSchema,
+  generateServiceSchema,
+} from "../../data/jsonLD";
 
 const {
   title = siteData.title,
@@ -12,13 +14,12 @@ const {
   canonical = url,
   article = null,
   service = null,
-  type = 'Organization',
+  type = "Organization",
   keywords = siteData.keywords,
   author = siteData.company.name,
   publishedTime = null,
-  modifiedTime = null
-} = Astro.props;   
-
+  modifiedTime = null,
+} = Astro.props;
 
 const organizationSchema = jsonLDGenerator({
   title,
@@ -26,7 +27,7 @@ const organizationSchema = jsonLDGenerator({
   url,
   image,
   type,
-  services: siteData.services
+  services: siteData.services,
 });
 
 // Ensure jsonLDGenerator actually returns *object*, not string
@@ -35,11 +36,11 @@ const organizationSchema = jsonLDGenerator({
 const websiteSchema = generateWebSiteSchema({
   url: import.meta.env.SITE,
   searchUrl: `${import.meta.env.SITE}/search`,
-  name: siteData.title
+  name: siteData.title,
 });
 
 // Combine schema into one array
-const combinedSchema:any = [organizationSchema, websiteSchema];
+const combinedSchema: any = [organizationSchema, websiteSchema];
 
 // Add service schema
 if (service) {
@@ -50,8 +51,8 @@ if (service) {
     priceRange: service.priceRange || "$$$",
     provider: {
       "@type": "Organization",
-      "name": siteData.company.name
-    }
+      name: siteData.company.name,
+    },
   });
 
   combinedSchema.push(serviceSchema);
@@ -59,7 +60,6 @@ if (service) {
 
 // Convert combined schema to JSON-LD script
 const jsonLD = JSON.stringify(combinedSchema, null, 2);
-
 ---
 
 <!-- Primary Meta Tags -->
@@ -85,17 +85,20 @@ const jsonLD = JSON.stringify(combinedSchema, null, 2);
 <meta property="og:image:height" content={image.height || "630"} />
 <meta property="og:updated_time" content={new Date().toISOString()} />
 
-{article && (
-  <>
-    <meta property="article:published_time" content={publishedTime} />
-    <meta property="article:modified_time" content={modifiedTime} />
-    <meta property="article:author" content={author} />
-    <meta property="article:section" content={article.section} />
-    {article.tags && article.tags.map((tag:any) => (
-      <meta property="article:tag" content={tag} />
-    ))}
-  </>
-)}
+{
+  article && (
+    <>
+      <meta property="article:published_time" content={publishedTime} />
+      <meta property="article:modified_time" content={modifiedTime} />
+      <meta property="article:author" content={author} />
+      <meta property="article:section" content={article.section} />
+      {article.tags &&
+        article.tags.map((tag: any) => (
+          <meta property="article:tag" content={tag} />
+        ))}
+    </>
+  )
+}
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image" />
@@ -110,12 +113,13 @@ const jsonLD = JSON.stringify(combinedSchema, null, 2);
 <!-- Additional Meta Tags -->
 <meta name="language" content="English" />
 <meta name="geo.region" content="ZA" />
-<meta name="geo.position" content="-26.2041;28.0473" /> <!-- Johannesburg coordinates -->
+<meta name="geo.position" content="-26.2041;28.0473" />
+<!-- Johannesburg coordinates -->
 <meta name="ICBM" content="-26.2041, 28.0473" />
 <meta name="revisit-after" content="7 days" />
 
 <!-- Structured Data -->
-<script type="application/ld+json" set:html={jsonLD}></script>
+<script type="application/ld+json" set:html={jsonLD} />
 
 <!-- Preload critical assets -->
 <link rel="preload" href={image.src} as="image" />

@@ -1,56 +1,61 @@
 ---
-import { Image } from "astro:assets"
-import Down from "../../assets/icons/Down.svg"
-import ServiceDetails from "../molecules/ServiceDetails.astro"
-import CTA from "../molecules/CTA.astro"
-import { detailedServices } from "../../constant"
+import { Image } from "astro:assets";
+import Down from "../../assets/icons/Down.svg";
+import ServiceDetails from "@ui/ServiceDetails.astro";
+import CTA from "@ui/CTA.astro";
+import { detailedServices } from "../../data";
 ---
+
 <section class="flex flex-col px-2 gap-2">
-
-    <div class="services-header bg-neutral py-10 flex flex-col justify-center items-center px-5 rounded-lg">
-
-        <div class=" flex justify-center items-center">
-            <h1 class="services-h1 inline-block text-transparent [-webkit-text-stroke:1px_#F39C12] text-7xl lg:text-9xl">
+    <div
+        class="services-header bg-neutral py-10 flex flex-col justify-center items-center px-5 rounded-lg"
+    >
+        <div class="flex justify-center items-center">
+            <h1
+                class="services-h1 inline-block text-transparent [-webkit-text-stroke:1px_#F39C12] text-7xl lg:text-9xl"
+            >
                 Services
             </h1>
 
-            <h3 class="services-h3 absolute max-sm:text-mobile-h2 text-desktop-h2 font-bold text-primary-orange mt-5">
+            <h3
+                class="services-h3 absolute max-sm:text-mobile-h2 text-desktop-h2 font-bold text-primary-orange mt-5"
+            >
                 Services
             </h3>
         </div>
 
-        <p class="services-p text-neutral2 max-w-3xl mx-auto text-center font-light">
-            Our team combines creativity, technology, and strategy to deliver websites and web apps that look amazing and perform flawlessly.
+        <p
+            class="services-p text-neutral2 max-w-3xl mx-auto text-center font-light"
+        >
+            Our team combines creativity, technology, and strategy to deliver
+            websites and web apps that look amazing and perform flawlessly.
         </p>
-
-
     </div>
 
     <div class="w-full text-neutral bg-white rounded-xl">
-
-
         {
-            detailedServices.map(service => (
-                <ServiceDetails 
-                    title={service.title} 
-                    idealFor={service.idealFor} 
-                    items={service.offer} 
+            detailedServices.map((service) => (
+                <ServiceDetails
+                    title={service.title}
+                    idealFor={service.idealFor}
+                    items={service.offer}
                     whyItMatters={service.whyItMatters}
                     reverse={service.layout === "reverse"}
                     visual={service.visual}
                 />
             ))
         }
-
     </div>
-
 
     <div class="md:mt-20">
-        <CTA textBefore="Let’s Create Something" textAfter="Together!" highlight="Amazing" buttonText="Schedule a Call" buttonHref="/#contact"/>
+        <CTA
+            textBefore="Let’s Create Something"
+            textAfter="Together!"
+            highlight="Amazing"
+            buttonText="Schedule a Call"
+            buttonHref="/#contact"
+        />
     </div>
-
-
-
 </section>
 
 <script>

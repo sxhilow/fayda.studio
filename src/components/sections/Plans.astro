@@ -1,34 +1,40 @@
 ---
-import { plans } from "../../constant";
-import PlanCrad from "../molecules/PlanCrad.astro";
-import CTA from "../molecules/CTA.astro";
+import { plans } from "../../data";
+import PlanCard from "@ui/PlanCard.astro";
+import CTA from "@ui/CTA.astro";
 ---
 
 <section id="plans" class="scroll-mt-24 my-10 md:my-16 px-5">
-
     <div class="text-center -space-y-2">
-
         <h1 class="plans-h1 text-desktop-h3 text-neutral">Plans</h1>
-        <p class="plans-p text-lg md:text-xl font-light text-neutral">Launch, grow, scale — pick the plan that fits your goals.</p>
-
+        <p class="plans-p text-lg md:text-xl font-light text-neutral">
+            Launch, grow, scale — pick the plan that fits your goals.
+        </p>
     </div>
 
-    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 max-sm:gap-10 max-md:gap-4 lg:gap-8 my-12">
-
+    <div
+        class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 max-sm:gap-10 max-md:gap-4 lg:gap-8 my-12"
+    >
         {
             plans.map((plan) => (
-                <PlanCrad tag={plan.tag} title={plan.title} description={plan.description} features={plan.features} tagClass={plan.tagColors}/>
+                <PlanCard
+                    tag={plan.tag}
+                    title={plan.title}
+                    description={plan.description}
+                    features={plan.features}
+                    tagClass={plan.tagColors}
+                />
             ))
         }
-
     </div>
 
-
-    
-    <CTA textBefore="Not sure where to start? Let’s" textAfter="it out together" highlight="figure" buttonText="Book a quick chat" buttonHref="#contact"/>
-
-
-
+    <CTA
+        textBefore="Not sure where to start? Let’s"
+        textAfter="it out together"
+        highlight="figure"
+        buttonText="Book a quick chat"
+        buttonHref="#contact"
+    />
 </section>
 
 <script>

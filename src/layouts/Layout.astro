@@ -1,73 +1,64 @@
 ---
-import "../styles/global.css"
+import "../styles/global.css";
 
-import siteData from "../constant/siteData.json"
-import Header from "../components/molecules/Header.astro";
-import Footer from "../components/molecules/Footer.astro"
-import Seo from "../components/molecules/Seo.astro";
+import siteData from "../data/siteData.json";
+import Header from "@chrome/Header.astro";
+import Footer from "@chrome/Footer.astro";
+import Seo from "@components/seo/Seo.astro";
 
-import Analytics from '@vercel/analytics/astro'
+import Analytics from "@vercel/analytics/astro";
 
 const {
 	title = siteData.title,
 	description = siteData.description,
-	image = siteData.image
+	image = siteData.image,
 } = Astro.props;
 ---
-
 
 <!doctype html>
 <html lang="en" class="scroll-smooth">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
-		<meta name="google-site-verification" content="gze7DFkTyFk9w5oDHQc9r7_mDgvLdFKdteAXLEoFxAE" />
+		<meta
+			name="google-site-verification"
+			content="gze7DFkTyFk9w5oDHQc9r7_mDgvLdFKdteAXLEoFxAE"
+		/>
 		<link rel="icon" type="image/svg+xml" href="/Logo.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<meta name="description" content={description} />
 		<title>{title}</title>
 
-		
-
-		<Seo 
-			{title}
-			{description}
-			url = {Astro.url}
-			{image}
-		/>
-		
+		<Seo {title} {description} url={Astro.url} {image} />
 	</head>
 	<body class="">
-
-		<div id="navbar" class="px-5 sticky top-0 left-0 w-full z-50 transition duration-150">
-			<Header/>
+		<div
+			id="navbar"
+			class="px-5 sticky top-0 left-0 w-full z-50 transition duration-150"
+		>
+			<Header />
 		</div>
-		
 
-			<main class="flex flex-col min-h-screen"> 
-				<slot />
-				<Analytics/>
-			</main>
-		
+		<main class="flex flex-col min-h-screen">
+			<slot />
+			<Analytics />
+		</main>
+
 		<div class="bg-neutral px-5 rounded-xl mx-2 mb-2">
-			<Footer/>
+			<Footer />
 		</div>
 
 		<!-- header bg -->
 		<script is:inline>
-			const navbar = document.getElementById("navbar")
+			const navbar = document.getElementById("navbar");
 
 			window.addEventListener("scroll", () => {
-				if(window.scrollY > 10){
-					navbar.classList.add("bg-bg", "shadow-sm")
-				}else{
-					navbar.classList.remove("bg-bg", "shadow-sm")
+				if (window.scrollY > 10) {
+					navbar.classList.add("bg-bg", "shadow-sm");
+				} else {
+					navbar.classList.remove("bg-bg", "shadow-sm");
 				}
-			})
+			});
 		</script>
-		
 	</body>
 </html>
-
-
-
