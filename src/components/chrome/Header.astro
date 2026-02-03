@@ -6,6 +6,8 @@ import Cross from "@icons/Cross.svg";
 
 import { navItems } from "../../data";
 import Button from "@ui/Button.astro";
+
+const currentPath = Astro.url.pathname;
 ---
 
 <header class="max-w-7xl mx-auto py-8 flex justify-between items-center">
@@ -27,6 +29,7 @@ import Button from "@ui/Button.astro";
                         variant="ghost"
                         underlineAnimation
                         class="uppercase"
+                        aria-current={currentPath == item.href ? "page" : undefined}
                     />
                 ))
             }
