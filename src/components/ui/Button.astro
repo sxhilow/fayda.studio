@@ -1,21 +1,51 @@
 ---
+import type { HTMLAttributes } from 'astro/types';
+
+interface Props extends HTMLAttributes<'a'>{
+    label: string;
+    iconPosition?: "right" | "left";
+    underlineAnimation?: boolean;
+    variant?: "ghost" | "outline" | "filled";
+}
+
 const {
     href,
     label,
-    classes,
     iconPosition = "right",
     underlineAnimation = false,
-    ...rest
-} = Astro.props
+    variant = "filled",
+    class: className,
+    ...rest // Capture all other attributes (id, target, etc.)
+} = Astro.props;
+
+const baseStyles = "inline-flex items-center justify-center gap-2 transition duration-150 rounded-lg group"
+
+const variants = {
+    "ghost": "font-regular text-brand-surface hover:text-brand-red",
+    "outline": "text-body-md border-2 border-brand-blue text-brand-surface bg-brand-blue/5 hover:bg-brand-neutral px-4 py-3",
+    "filled": "bg-brand-blue font-semibold text-brand-surface hover:bg-blue-900 px-4 py-3 "
+}
+
+const activeStyles = [
+    baseStyles,
+    variants[variant],
+    className
+].join(" ");
+
 ---
 
-<a href={href} class={`${classes} transition duration-150 aria-[current=page]:text-primary-orange group`} {...rest}>
+<a href={href} class={activeStyles} {...rest}>
+
     {iconPosition === "left" && <slot name="icon"/>}
-    {label}
+
+    <span>
+        {label}
+        {
+            underlineAnimation && <span class="block max-w-0 group-hover:max-w-full transition-all duration-300 h-0.5 bg-primary-orange"></span>
+        }
+    </span>
+
     {iconPosition === "right" && <slot name="icon"/>}
 
-    {
-        underlineAnimation && <span class="block max-w-0 group-hover:max-w-full transition-all duration-300 h-0.5 bg-primary-orange"></span>
-    }
 
 </a>
