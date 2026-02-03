@@ -5,7 +5,7 @@ interface Props extends HTMLAttributes<'a'>{
     label: string;
     iconPosition?: "right" | "left";
     underlineAnimation?: boolean;
-    variant?: "ghost" | "outline" | "filled";
+    variant?: "ghost" | "outline" | "filled" | "rounded";
 }
 
 const {
@@ -18,18 +18,19 @@ const {
     ...rest // Capture all other attributes (id, target, etc.)
 } = Astro.props;
 
-const baseStyles = "inline-flex items-center justify-center gap-2 transition duration-150 rounded-lg group aria-[current=page]:text-brand-surface"
+const baseStyles = "inline-flex items-center justify-center  transition duration-150  group aria-[current=page]:text-brand-surface"
 
 const variants = {
     "ghost": "font-regular text-neutral-7 hover:text-brand-surface",
-    "outline": "text-body-md border-2 border-brand-blue text-brand-surface bg-brand-blue/5 hover:bg-brand-neutral px-4 py-3",
-    "filled": "bg-brand-blue font-semibold text-brand-surface hover:bg-blue-900 px-4 py-3 "
+    "outline": "text-body-md border-2 border-brand-blue text-brand-surface bg-brand-blue/5 hover:bg-brand-neutral px-4 py-3 gap-2 rounded-lg",
+    "filled": "bg-brand-blue font-semibold text-brand-surface hover:bg-blue-900 px-4 py-3 gap-2 rounded-lg",
+    "rounded": "bg-brand-blue font-semibold text-brand-surface hover:bg-blue-900 px-4 py-4 rounded-full"
 }
 
 const activeStyles = [
+    className,
     baseStyles,
-    variants[variant],
-    className
+    variants[variant]
 ].join(" ");
 
 ---

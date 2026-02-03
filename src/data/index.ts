@@ -1,6 +1,8 @@
 import UIUXImage from "../assets/images/service-uiux.avif";
 import WebDevImage from "../assets/images/service-webdev.avif";
 import WebAppImage from "../assets/images/service-webapp.avif";
+import Mail from "@icons/Mail.svg"
+import Call from "@icons/Call.svg"
 
 
 
@@ -23,6 +25,46 @@ export const navItems = [
   },
 ] as const;
 
+type FooterSubItems = {
+  href?: string,
+  text?: string,
+  icon?: any
+}
+
+type FooterItemsProps = {
+  label: string,
+  items: FooterSubItems[]
+}
+
+export const footerItems: FooterItemsProps[] = [
+  {
+    label: "Links",
+    items: [
+      { text: "Home", href: "/" },
+      { text: "Services", href: "/services" },
+      { text: "Plans", href: "/plans" },
+      { text: "Contact", href: "/contact" },
+    ]
+  },
+  {
+    label: "Services",
+    items: [
+      { text: "Hero Revamps" },
+      { text: "Landing page Revamps" },
+      { text: "UI/UX Design" },
+      { text: "Branding" },
+      { text: "Web Development" },
+      { text: "E-commerce and MVPs" },
+    ]
+  },
+  {
+    label: "Contact",
+    items: [
+      { text: "hello@fayda.studio", icon: Mail, href: "mailto:hello@fayda.studio" },
+      { text: "Book a call", icon: Call, href: "/contact" }
+    ]
+  }
+]
 
 export const services = [
   {

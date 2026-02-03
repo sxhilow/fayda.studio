@@ -1,26 +1,97 @@
 ---
-import { Image } from "astro:assets";
+import { footerItems} from "@data/index"
+import {whatsappData} from "@data/whatsapp"
+import { Image } from "astro:assets"
+import pfp from "@images/pfp.png"
+import Button from "@ui/Button.astro"
+import Logo from "@assets/Logo.svg"
+import Studio from "@assets/Studio.svg"
+import UpRight from "@icons/UpRight.svg"
+import Whatsapp from "@icons/Whatsapp.svg"
 
-import LogoWhite from "../../assets/icons/LogoWhite.svg"
+
 ---
 
-<footer class="max-w-6xl mx-auto py-24 max-md:py-20">
+<footer class="max-w-7xl mx-auto border-x border-neutral-12 flex flex-col">
 
-    <div>
-        <Image
-            src={LogoWhite}
-            alt="Fayda Logo"
-        />
+    <div class="flex max-sm:flex-col justify-between md:items-center px-5 py-5 md:px-8">
+        <div>
+            <Logo class="w-46 h-28 lg:w-85 lg:h-46"/>
+        </div>
+
+        <div class="flex items-center gap-4">
+           <div class="flex flex-col">
+                <p class="text-h3 text-brand-surface">Let's work <span class="text-neutral-7">together</span></p>
+                <p class="font-secondary text-body-lg text-brand-blue font-medium">Book a free consult</p>
+           </div>
+           <div>
+                <Button
+                    href={"/contact"}
+                    label=""
+                    class="rounded-full"
+                    variant="rounded"
+                >
+                    <UpRight slot="icon"/>
+                </Button>
+           </div>
+        </div>
     </div>
 
-    <div class="flex max-md:flex-col justify-between text-bg font-light">
-        <span>
-            Your Partner in Fast, Functional, Beautiful Websites
-        </span>
+    <div class="border-y border-neutral-12 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-between space-y-8 py-8 lg:py-16 px-5 md:px-16">
 
-        <span class="max-md:mt-10">
-            2025 Fayday.Studio. All rights reserved
-        </span>
+        {
+            footerItems.map((section) => (
+                <div class="flex flex-col gap-4">
+                    <h3 class="font-semibold text-brand-surface">{section.label}</h3>
+                    <ul class="space-y-4 text-neutral-7 font-regular ">
+                        {section.items.map((item) => (
+                            <li>
+                                {item.href ? (
+                                    <a href={item.href} class="font-light inline-flex items-center gap-2 hover:text-neutral-5 transition duration-150">
+                                        {item.icon && <item.icon />}
+                                        {item.text}
+                                    </a>
+                                ): (
+                                    <span class="hover:text-neutral-5 transition duration-150">{item.text}</span>
+                                )}
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            ))
+        }
+
+        <div class="bg-brand-neutral rounded-lg p-8 flex flex-col gap-4">
+            <div >
+                <Image
+                    src={pfp}
+                    alt={"ME"}
+                    class="w-25 rounded-lg"
+                />
+            </div>
+            <p class="text-brand-surface font-regular text-body-md">
+                Hi, I’m Sahil Jada, the founder. If you have questions or just want to talk about your idea, I’m only a message away.
+            </p>
+
+            <Button
+                href={whatsappData.link},
+                label="Chat to me"
+                iconPosition="left"
+                class="bg-neutral-12 gap-4"
+            >   
+                <Whatsapp slot={"icon"}/>
+            </Button>
+        </div>
+        
+    </div>
+
+    <div class="flex max-sm:flex-col-reverse justify-between md:items-center px-5 py-5 md:px-8">
+        <div>
+            <span class="text-neutral-7">© 2026 Fayda Studio. All rights reserved.</span>
+        </div>
+        <div>
+            <Studio class="w-46 h-28 lg:w-85 lg:h-46"/>
+        </div>
     </div>
     
 </footer>
