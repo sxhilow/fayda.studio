@@ -1,75 +1,159 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bitcount+Single:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
-@theme{
-    --font-base: "Inter", sans-serif;
+@theme {
+  --font-base: "Inter", sans-serif;
+  --font-secondary: "Bitcount Single", system-ui;
 
-    --color-bg: #F5F5F5;
-    --color-neutral: #333333;
-    --color-neutral2: #F0F0F0;
-    --color-neutral3: #E9E1E1;
+  /* --- BRAND COLORS --- */
+  --brand-surface: #f5f5f5;
+  --brand-blue: #28affa;
+  --brand-neutral: #161616;
+  --brand-red: #ef5350;
 
-    --color-primary-orange: #F39C12;
-    --color-accent-blue: #28AFFA;
+  /* --- BLUE PALETTE --- */
+  --blue-50: #eaf7ff;
+  --blue-100: #bce6fd;
+  --blue-200: #9cdafd;
+  --blue-300: #6fc9fc;
+  --blue-400: #53bffb;
+  --blue-500: #28affa;
+  --blue-600: #249fe4;
+  --blue-700: #1c7cb2;
+  --blue-800: #16608a;
+  --blue-900: #114a69;
 
+  /* --- RED PALETTE --- */
+  --red-50: #fdeeee;
+  --red-100: #facaca;
+  --red-200: #f8b0af;
+  --red-300: #f48c8a;
+  --red-400: #f27573;
+  --red-500: #ef5350;
+  --red-600: #d94c49;
+  --red-700: #aa3b39;
+  --red-800: #832e2c;
+  --red-900: #642322;
 
-    --text-desktop-h1: 65px;
-    --text-desktop-h2: 55px;
-    --text-desktop-h3: 45px;
-    --text-desktop-h4: 35px;
-    --text-desktop-h5: 26px;
-    --text-desktop-p: 16px;
+  /* --- NEUTRAL PALETTE --- */
+  --neutral-1: #ffffff;
+  --neutral-2: #fdfdfd;
+  --neutral-3: #f6f6f6;
+  --neutral-4: #f1f1f1;
+  --neutral-5: #dcdcdc;
+  --neutral-6: #c5c5c5;
+  --neutral-7: #969696;
+  --neutral-8: #686868;
+  --neutral-9: #555555;
+  --neutral-10: #393939;
+  --neutral-11: #323232;
+  --neutral-12: #292929;
+  --neutral-13: #161616;
 
-    --text-mobile-h1: 45px;
-    --text-mobile-h2: 35px;
-    --text-mobile-h3: 25px;
-    --text-mobile-h4: 18px;
-    --text-mobile-h5: 16px;
-    --text-mobile-p: 16px;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
 
 }
 
-
-
-@layer utilities{
-    .bg-active{
-        background-color: var(--card-hover-bg);
-    }
-
-    .three-gradient{
-        background-image: linear-gradient(to top right, #28AFFA, #FF6363, #F39C12);
-    }
+body {
+  font-family: var(--font-base);
 }
 
-body{
-    background-color: var(--color-bg);
-    font-family: var(--font-base);
-}
+@utility text-display-lg {
+  /* Mobile: 48px, Bold, -1.44% tracking */
+  font-size: 48px;
+  font-weight: 700;
+  letter-spacing: -0.0144em;
+  line-height: 1.1;
 
-@keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  @media (width >=768px) {
+    /* Desktop: 80px, Bold, -3.2% tracking */
+    font-size: 80px;
+    letter-spacing: -0.032em;
   }
-  
-  .animate-fadeIn {
-    animation: fadeIn 0.5s ease-out forwards;
 }
 
-.details-content {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.5s ease-in-out, opacity 0.15s ease-in-out;
-  opacity: 0;
+@utility text-h1 {
+  /* Mobile: 40px, Bold, -1.5% tracking */
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.15;
+
+  @media (width >=768px) {
+    /* Desktop: 64px, Bold, -2% tracking */
+    font-size: 64px;
+    letter-spacing: -0.02em;
+  }
 }
 
-details[open] .details-content {
-  max-height: 500px;
-  opacity: 1; 
+@utility text-h2 {
+  /* Mobile: 32px, SemiBold, -1% tracking */
+  font-size: 32px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+
+  @media (width >=768px) {
+    /* Desktop: 48px, SemiBold, -1% tracking */
+    font-size: 48px;
+  }
+}
+
+@utility text-h3 {
+  /* Mobile: 24px, SemiBold, 0% tracking */
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 0em;
+  line-height: 1.2;
+
+  @media (width >=768px) {
+    /* Desktop: 32px, SemiBold, -0.3% tracking */
+    font-size: 32px;
+    letter-spacing: -0.003em;
+    line-height: 1.3;
+  }
+}
+
+@utility text-body-lg {
+  /* Mobile: 18px, Regular, 0% tracking */
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 0em;
+  line-height: 1.5;
+
+  @media (width >=768px) {
+    /* Desktop: 20px, Regular, 0% tracking */
+    font-size: 20px;
+    line-height: 1.6;
+  }
+}
+
+@utility text-body-md {
+  /* Mobile & Desktop: 16px, Regular, 0% tracking */
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0em;
+  line-height: 1.5;
+
+  @media (width >=768px) {
+    line-height: 1.6;
+  }
+}
+
+@utility text-caption {
+  /* Mobile: 11px, Regular, 0.5% tracking */
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.005em;
+  line-height: 1.4;
+
+  @media (width >=768px) {
+    /* Desktop: 12px, Medium, 0.5% tracking */
+    font-size: 12px;
+    font-weight: 500;
+  }
 }
