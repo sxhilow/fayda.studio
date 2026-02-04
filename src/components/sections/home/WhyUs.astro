@@ -1,0 +1,114 @@
+---
+import Pill from "@ui/Pill.astro";
+import Star from "@icons/Star.svg";
+import { Image } from "astro:assets";
+import Flash from "@images/flash.png";
+import Mobile from "@images/mobile.png";
+import Boy from "@images/boy.png";
+import Dollar from "@images/dollar.png";
+import Section from "@ui/Section.astro";
+---
+
+<Section>
+    <div class="space-y-4">
+        <Pill label="Why Fayda">
+            <Star slot={"icon"} />
+        </Pill>
+
+        <div class="space-y-2">
+            <h1 class="text-h1 text-brand-surface">Why work with us?</h1>
+            <p class="text-brand-surface font-light">
+                We design fast, modern websites that are built to perform.
+            </p>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-12 gap-5 auto-rows-[164px]">
+        <div
+            class="col-span-12 md:col-span-7 row-span-2 bg-neutral-12/10 border border-neutral-12 rounded-2xl flex items-center lg:items-start p-5 lg:p-10"
+        >
+            <Image
+                src={Flash}
+                alt={"Flash"}
+                class="w-32 lg:w-64 h-auto object-contain"
+                loading="eager"
+            />
+
+            <div class="max-w-[60%] space-y-4">
+                <h3 class="text-h3 text-brand-surface">
+                    Blazing Fast Performance
+                </h3>
+                <p class="text-neutral-7">
+                    We build with Astro and Next.js. Making sure your site will
+                    load instantly, improving your SEO and keeping users on the
+                    page.
+                </p>
+            </div>
+        </div>
+
+        <div
+            class="relative col-span-12 md:col-span-5 row-span-2 bg-neutral-12/10 border border-neutral-12 rounded-2xl p-5 lg:p-10 overflow-hidden"
+        >
+            <div class="relative space-y-4">
+                <h3 class="text-h3 text-brand-surface">Mobile-First Design</h3>
+                <p class="text-neutral-7">
+                    60% of traffic in 2026 comes from mobile. So we design
+                    responsive interfaces that look perfect on phones, tablets,
+                    and desktops.
+                </p>
+            </div>
+
+            <Image
+                src={Mobile}
+                alt={"Mobile"}
+                class="absolute -right-10 -bottom-20 w-64 h-auto object-contain"
+                loading="eager"
+            />
+        </div>
+
+        <div
+            class="relative col-span-12 md:col-span-5 row-span-2 bg-neutral-12/10 border border-neutral-12 rounded-2xl p-5 lg:p-10 overflow-hidden"
+        >
+            <div
+                class="relative space-y-4 flex flex-col justify-end w-full text-end"
+            >
+                <h3 class="text-h3 text-brand-surface">
+                    Work with founder directly
+                </h3>
+                <p class="text-neutral-7">
+                    No account managers or middlemen. You work directly with the
+                    creators to ensure your vision is executed perfectly.
+                </p>
+            </div>
+
+            <Image
+                src={Boy}
+                alt={"Founder"}
+                class="absolute -left-10 lg:-right-10 -bottom-20 w-68 h-auto object-contain"
+                loading="lazy"
+            />
+        </div>
+
+        <div
+            class="col-span-12 md:col-span-7 row-span-2 bg-neutral-12/10 border border-neutral-12 rounded-2xl flex items-center justify-end lg:items-start p-5 lg:p-10"
+        >
+            <div class="max-w-[60%] space-y-4">
+                <h3 class="text-h3 text-brand-surface">
+                    Startup-friendly rates.
+                </h3>
+                <p class="text-neutral-7">
+                    As a lean, independent studio, we deliver high-quality
+                    custom development at rates that make sense for founders and
+                    growing businesses.
+                </p>
+            </div>
+
+            <Image
+                src={Dollar}
+                alt={"Price"}
+                class="w-32 lg:w-64 h-auto object-contain"
+                loading="lazy"
+            />
+        </div>
+    </div>
+</Section>
