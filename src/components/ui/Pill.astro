@@ -1,17 +1,22 @@
 ---
+import type { HTMLAttributes } from 'astro/types'
+
+interface Props extends HTMLAttributes<'div'>{
+    label: string
+}
 
 const {
     label,
-    classes
+    class: className
 } = Astro.props
 
 ---
 
-<div class=`pill ${classes} inline-flex rounded-full shadow-sm border border-neutral/10 justify-center items-center gap-2 px-4 py-2 bg-bg`>
+<div class=`${className} text-caption inline-flex rounded-full shadow-sm border border-brand-red text-neutral-5 justify-center items-center gap-2 px-4 py-2`>
 
     <slot name="icon"/>
     
-    <span class="text-transparent bg-clip-text bg-gradient-to-br from-neutral to-neutral font-light">
+    <span class="uppercase">
         {label}
     </span>
 

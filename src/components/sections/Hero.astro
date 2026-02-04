@@ -1,126 +1,118 @@
 ---
-import { Image } from "astro:assets";
-
-import Rocket from "@icons/Rocket.svg";
-import Right from "@icons/Right.svg";
-import HeroImage from "@images/bg-grid.svg";
-
 import Pill from "@ui/Pill.astro";
+import Rocket from "@icons/Rocket.svg";
 import Button from "@ui/Button.astro";
+import Right from "@icons/Right.svg";
+import Check from "@icons/Check.svg";
+import Close from "@icons/Close.svg";
+import { comparisonTableData } from "@data/why-us";
 ---
 
-<section id="#" class="relative w-full h-screen px-5 overflow-hidden -mt-16">
-    <picture class="absolute inset-0 w-full h-full md:hidden">
-        <Image
-            src={HeroImage}
-            alt="Hero"
-            class="w-full h-full object-cover"
-            loading="eager"
-        />
-    </picture>
-
-    <video
-        autoplay
-        muted
-        loop
-        playsinline
-        preload="metadata"
-        poster="/images/hero-poster.png"
-        class="absolute inset-0 w-full h-full object-cover -z-10 hidden md:block scale-105"
-    >
-        <source
-            src="/hero-bg.webm"
-            type="video/webm"
-            media="(min-width: 768px)"
-        />
-        <source
-            src="/hero-bg.mp4"
-            type="video/mp4"
-            media="(min-width: 768px)"
-        />
-    </video>
-
-    <div
-        class="relative z-40 max-w-4xl mx-auto flex flex-col md:justify-center md:items-center max-sm:space-y-6 space-y-10 mt-38 max-md:mt-20"
-    >
-        <Pill label="Trusted by Startups & Freelancers">
-            <Image slot={"icon"} src={Rocket} alt="Icon" class="w-8 h-8" />
-        </Pill>
-
+<section class="border-b border-neutral-12">
+    <div class="flex max-md:flex-col min-h-screen">
         <div
-            class="flex flex-col justify-center items-center md:text-center space-y-6 max-sm:space-y-4"
+            class="flex-1 border-b lg:border-b-0 md:border-r border-neutral-12 max-lg:pt-34 max-md:pb-8 flex flex-col justify-center items-start gap-8 max-lg:px-5 lg:pl-20"
         >
-            <div class="space-y-2">
-                <h1 class="hero-title text-display-lg text-neutral">
-                    Websites
+            <Pill label="Trusted by businesses & startups">
+                <Rocket slot="icon" />
+            </Pill>
 
-                    <span class="text-primary-orange relative inline-block">
-                        That Work
-
-                        <svg
-                            class="absolute -bottom-3 max-sm:-bottom-2 max-sm:left-1 left-2 w-full"
-                            width="284"
-                            height="18"
-                            viewBox="0 0 284 18"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                        >
-                            <path
-                                d="M2.00037 15.5026C92.0004 -1.99726 191.5 -2.99731 282 15.5026"
-                                stroke="#F39C12"
-                                stroke-width="4"
-                                stroke-linecap="round"></path>
-                        </svg>
+            <div class="max-w-xl space-y-2">
+                <h1 class="text-brand-surface text-display-lg">
+                    We Design and Build Modern
+                    <span
+                        class="font-secondary text-brand-red tracking-normal font-semibold"
+                    >
+                        Websites
                     </span>
-
-                    for You and Your Customers.
                 </h1>
 
-                <div class="lg:px-28">
-                    <p class="hero-subtitle text-neutral font-light text-xl">
-                        We build fast, responsive, and memorable websites
-                        designed to grow your business and make your ideas real.
-                    </p>
+                <p class="text-brand-surface font-light text-body-md">
+                    Stop losing customers to slow, outdated websites. We create
+                    custom-coded, high-performance digital experiences that look
+                    great on every device.
+                </p>
+            </div>
+
+            <div class="flex max-sm:flex-col w-full gap-4">
+                <Button
+                    href="/services"
+                    label="Explore Our Services"
+                    class=""
+                />
+                <Button href="/#work" label="See Our Work" variant="outline" />
+            </div>
+        </div>
+
+        <div class="flex-1 flex flex-col w-full">
+            <div
+                class="flex-3/4 flex flex-col justify-center items-center md:pt-32 border-b border-neutral-12"
+            >
+                <div class="py-5 px-5 xl:px-20 w-full">
+                    <table
+                        class="w-full bg-linear-to-b from-brand-blue/10 to-blue-900/10 rounded-2xl overflow-hidden"
+                    >
+                        <caption
+                            class="text-brand-surface text-body-lg font-medium"
+                        >
+                            What <span class="text-brand-blue">Set us</span> Apart
+                        </caption>
+
+                        <thead>
+                            <tr class="text-brand-surface">
+                                <th class="font-semibold px-4 py-4">Features</th
+                                >
+                                <th
+                                    class="font-semibold text-brand-red px-4 py-4"
+                                    >Fayda.studio</th
+                                >
+                                <th class="font-semibold px-4 py-4"
+                                    >Typical Agencies</th
+                                >
+                            </tr>
+                        </thead>
+
+                        <tbody class="bg-brand-blue/5 rounded-2xl">
+                            {
+                                comparisonTableData.map((row) => (
+                                    <tr class="text-brand-surface text-xs sm:text-sm border-b border-blue-900 last:border-b-0">
+                                        <td class="font-light py-2 px-4">
+                                            {row.feature}
+                                        </td>
+
+                                        <td class="py-2 px-4 font-light">
+                                            <div class="flex items-center gap-2">
+                                                <Check />
+                                                <span>{row.us}</span>
+                                            </div>
+                                        </td>
+
+                                        <td class="py-2 px-4 font-light">
+                                            <div class="flex items-center gap-2">
+                                                <Close />
+                                                <span>{row.them}</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                ))
+                            }
+                        </tbody>
+                    </table>
                 </div>
             </div>
 
-            <div class="flex max-md:flex-col max-md:w-full gap-4">
+            <div
+                class="flex-1/4 flex justify-center items-center gap-2 group py-8 px-5"
+            >
                 <Button
-                    href="#contact"
-                    label="Get a free Quote"
-                    classes="rounded-full px-6 py-3 flex justify-center items-center gap-2 bg-neutral text-neutral2 hover:bg-neutral/90 group"
+                    href="/contact"
+                    label="Book a free Discovery Call"
+                    variant="ghost"
+                    class="text-neutral-7 font-secondary text-h3 animate-bounce group-hover:animate-none group-hover:text-brand-surface transition-all duration-150 gap-4"
                 >
-                    <Image
-                        src={Right}
-                        alt="Icon"
-                        slot="icon"
-                        class="group-hover:translate-x-2 transition ease-in-out"
-                    />
+                    <Right slot={"icon"} />
                 </Button>
-
-                <Button
-                    href="#services"
-                    label="Our Services"
-                    classes="rounded-full border border-neutral/20 px-6 py-3 flex justify-center items-center gap-2 bg-bg text-neutral shadow-sm hover:bg-primary-orange/10 group"
-                />
             </div>
         </div>
     </div>
 </section>
-
-<script>
-    import { heroAnimation } from "../../animations/Hero";
-    heroAnimation();
-
-    window.addEventListener("load", () => {
-        const video = document.querySelector("video");
-        if (video) {
-            video.load(); // Reloads sources fresh
-            video
-                .play()
-                .catch((error) =>
-                    console.error("Video playback error:", error),
-                ); // Handles any autoplay policy issues
-        }
-    });
-</script>

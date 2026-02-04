@@ -34,12 +34,12 @@ const {
 	<body>
 		<div
 			id="navbar"
-			class="px-5 sticky top-0 left-0 w-full z-50 transition-all duration-300 border-b border-neutral-12 bg-brand-neutral"
+			class="px-5 fixed top-0 left-0 w-full z-50 transition-all duration-500 border-b border-neutral-12 bg-brand-neutral"
 		>
 			<Header />
 		</div>
 
-		<main class="flex flex-col min-h-screen">
+		<main class="">
 			<slot />
 			<Analytics />
 		</main>
@@ -57,10 +57,10 @@ const {
 				const currentScrollY = window.scrollY;
 
 				if (currentScrollY > lastScrollY && currentScrollY > 30) {
-				// scrolling down → hide
+				// scrolling down = hide
 				navbar.style.transform = "translateY(-100%)";
 				} else {
-				// scrolling up → show
+				// scrolling up = show
 				navbar.style.transform = "translateY(0)";
 				}
 
