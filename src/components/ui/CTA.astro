@@ -1,91 +1,42 @@
 ---
-import Button from "@ui/Button.astro";
+import Button, { type ButtonVariants } from "@ui/Button.astro";
 
-const { textBefore, textAfter, highlight, buttonText, buttonHref } =
-  Astro.props;
+interface Props {
+  description: string;
+  url: string;
+  buttonLabel: string;
+  buttonVariant: ButtonVariants;
+  buttonIcon?: any
+  class?: string;
+}
+
+const {
+  description,
+  url,
+  buttonLabel,
+  buttonVariant,
+  buttonIcon: ButtonIcon,
+  class: className,
+} = Astro.props;
 ---
 
-<div
-  class="cta-section max-w-6xl w-full mx-auto relative overflow-hidden h-[233px] rounded-lg"
->
-  <!-- SVG background -->
-  <svg
-    class="absolute top-0 left-1/2 transform -translate-x-1/2 w-[1122px] md:w-full h-full object-cover"
-    viewBox="0 0 1122 233"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <rect width="1122" height="233" rx="10" fill="#F0F0F0"></rect>
-    <rect
-      width="1122"
-      height="233"
-      rx="10"
-      fill="url(#paint0_radial_61_1014)"
-      fill-opacity="0.2"></rect>
-    <rect
-      width="1122"
-      height="233"
-      rx="10"
-      fill="url(#paint1_radial_61_1014)"
-      fill-opacity="0.2"></rect>
-    <defs>
-      <radialGradient
-        id="paint0_radial_61_1014"
-        cx="0"
-        cy="0"
-        r="1"
-        gradientTransform="matrix(-560.5 -116.861 46.7196 -116.396 561 116.861)"
-        gradientUnits="userSpaceOnUse"
-      >
-        <stop stop-color="#F39C12"></stop>
-        <stop offset="1" stop-color="#F0F0F0"></stop>
-      </radialGradient>
-      <radialGradient
-        id="paint1_radial_61_1014"
-        cx="0"
-        cy="0"
-        r="1"
-        gradientTransform="matrix(561.5 -116.5 46.5754 116.604 561 116.5)"
-        gradientUnits="userSpaceOnUse"
-      >
-        <stop stop-color="#28AFFA"></stop>
-        <stop offset="1" stop-color="#F0F0F0"></stop>
-      </radialGradient>
-    </defs>
-  </svg>
+<div class:list={["max-w-7xl w-full mx-auto rounded-xl md:rounded-4xl bg-brand-blue/5 flex max-lg:flex-col justify-between items-center gap-2 p-5 md:px-20 md:py-12 border border-brand-blue ", className]}>
 
-  <div
-    class="absolute inset-0 flex max-sm:flex-col items-center md:justify-between md:px-30 max-sm:py-10 text-center gap-6 md:gap-10"
-  >
-    <h1 class="text-neutral text-2xl md:text-desktop-h4 font-semibold max-w-md">
-      {textBefore}
-      <span class="text-primary-orange">{highlight}</span>
-      {textAfter}
-    </h1>
+  <div class="max-w-xl flex flex-col gap-1 max-lg:text-center ">
+    <h4 class="text-brand-neutral text-h2">
+      <slot name="title"/>
+    </h4>
+    <p class="text-neutral-12 font-light">{description}</p>
+  </div>
+
+  <div class="max-lg:w-full">
     <Button
-      href={buttonHref}
-      label={buttonText}
-      classes="flex justify-center items-center rounded-full px-6 py-3 opacity-60 three-gradient text-white"
+      label={buttonLabel}
+      href={url}
+      variant={buttonVariant}
+      class="lg:animate-bounce w-full hover:[animation-play-state:paused] ease-in-out"
     >
-      <svg
-        slot="icon"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M19 12L5 12"
-          stroke="#F5F5F5"
-          stroke-width="1.5"
-          stroke-linecap="round"></path>
-        <path
-          d="M16 16L19.2929 12.7071C19.6834 12.3166 19.6834 11.6834 19.2929 11.2929L16 8"
-          stroke="#F5F5F5"
-          stroke-width="1.5"
-          stroke-linecap="round"></path>
-      </svg>
+      {ButtonIcon && <ButtonIcon  slot={'icon'}/>}
     </Button>
   </div>
 </div>

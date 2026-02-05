@@ -1,11 +1,13 @@
 ---
 import type { HTMLAttributes } from 'astro/types';
 
+export type ButtonVariants = "ghost" | "outline" | "filled" | "rounded";
+
 interface Props extends HTMLAttributes<'a'>{
     label: string;
     iconPosition?: "right" | "left";
     underlineAnimation?: boolean;
-    variant?: "ghost" | "outline" | "filled" | "rounded";
+    variant?: ButtonVariants
 }
 
 const {
