@@ -29,9 +29,9 @@ import { comparisonTableData } from "@data/why-us";
                     </h1>
 
                     <p class="text-brand-surface font-light text-body-md">
-                        Stop losing customers to slow, outdated websites. We create
-                        custom-coded, high-performance digital experiences that look
-                        great on every device.
+                        Stop losing customers to slow, outdated websites. We
+                        create custom-coded, high-performance digital
+                        experiences that look great on every device.
                     </p>
                 </div>
 
@@ -41,10 +41,13 @@ import { comparisonTableData } from "@data/why-us";
                         label="Explore Our Services"
                         class=""
                     />
-                    <Button href="/#work" label="See Our Work" variant="outline" />
+                    <Button
+                        href="/#work"
+                        label="See Our Work"
+                        variant="outline"
+                    />
                 </div>
-
-            </div>            
+            </div>
         </div>
 
         <div class="flex-1 min-w-0 flex flex-col w-full">
@@ -52,55 +55,58 @@ import { comparisonTableData } from "@data/why-us";
                 class="flex-3/4 flex flex-col justify-center items-center md:pt-32 border-b border-neutral-12"
             >
                 <div class="py-5 px-5 xl:px-20 w-full">
-                    <table
-                        class="w-full bg-linear-to-b from-brand-blue/10 to-blue-900/10 rounded-2xl overflow-hidden"
-                    >
-                        <caption
-                            class="text-brand-surface text-body-lg font-medium"
+                    <div class="overflow-x-auto w-full">
+                        <table
+                            class="w-full min-w-[350px] bg-linear-to-b from-brand-blue/10 to-blue-900/10 rounded-2xl overflow-hidden"
                         >
-                            What <span class="text-brand-blue">Set us</span> Apart
-                        </caption>
+                            <caption
+                                class="text-brand-surface text-body-lg font-medium"
+                            >
+                                What <span class="text-brand-blue">Set us</span> Apart
+                            </caption>
 
-                        <thead>
-                            <tr class="text-brand-surface">
-                                <th class="font-semibold px-4 py-4">Features</th
-                                >
-                                <th
-                                    class="font-semibold text-brand-red px-4 py-4"
-                                    >Fayda.studio</th
-                                >
-                                <th class="font-semibold px-4 py-4"
-                                    >Typical Agencies</th
-                                >
-                            </tr>
-                        </thead>
+                            <thead>
+                                <tr class="text-brand-surface">
+                                    <th class="font-semibold px-4 py-4"
+                                        >Features</th
+                                    >
+                                    <th
+                                        class="font-semibold text-brand-red px-4 py-4"
+                                        >Fayda.studio</th
+                                    >
+                                    <th class="font-semibold px-4 py-4"
+                                        >Typical Agencies</th
+                                    >
+                                </tr>
+                            </thead>
 
-                        <tbody class="bg-brand-blue/5 rounded-2xl">
-                            {
-                                comparisonTableData.map((row) => (
-                                    <tr class="text-brand-surface text-xs sm:text-sm border-b border-blue-900 last:border-b-0">
-                                        <td class="font-light py-2 px-4">
-                                            {row.feature}
-                                        </td>
+                            <tbody class="bg-brand-blue/5 rounded-2xl">
+                                {
+                                    comparisonTableData.map((row) => (
+                                        <tr class="text-brand-surface text-xs sm:text-sm border-b border-blue-900 last:border-b-0">
+                                            <td class="font-light py-2 px-4">
+                                                {row.feature}
+                                            </td>
 
-                                        <td class="py-2 px-4 font-light">
-                                            <div class="flex items-center gap-2">
-                                                <Check />
-                                                <span>{row.us}</span>
-                                            </div>
-                                        </td>
+                                            <td class="py-2 px-4 font-light">
+                                                <div class="flex items-center gap-2">
+                                                    <Check />
+                                                    <span>{row.us}</span>
+                                                </div>
+                                            </td>
 
-                                        <td class="py-2 px-4 font-light">
-                                            <div class="flex items-center gap-2">
-                                                <Close />
-                                                <span>{row.them}</span>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                ))
-                            }
-                        </tbody>
-                    </table>
+                                            <td class="py-2 px-4 font-light">
+                                                <div class="flex items-center gap-2">
+                                                    <Close />
+                                                    <span>{row.them}</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    ))
+                                }
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
 
