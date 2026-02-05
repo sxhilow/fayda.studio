@@ -7,6 +7,8 @@ import Mobile from "@images/mobile.png";
 import Boy from "@images/boy.png";
 import Dollar from "@images/dollar.png";
 import Section from "@ui/Section.astro";
+import Button from "@ui/Button.astro";
+import Call from "@icons/Call.svg";
 ---
 
 <Section>
@@ -15,11 +17,23 @@ import Section from "@ui/Section.astro";
             <Star slot={"icon"} />
         </Pill>
 
-        <div class="space-y-2">
-            <h1 class="text-h1 text-brand-surface">Why work with us?</h1>
-            <p class="text-brand-surface font-light">
-                We design fast, modern websites that are built to perform.
-            </p>
+        <div class="flex justify-between items-end">
+            <div class="space-y-2">
+                <h1 class="text-h1 text-brand-surface">Why work with us?</h1>
+                <p class="text-brand-surface font-light">
+                    We design fast, modern websites that are built to perform.
+                </p>
+            </div>
+
+            <Button
+                label={"Let’s discuss your project"}
+                href={"/contacts"}
+                variant="outline"
+                iconPosition="left"
+                class={'max-sm:hidden'}
+            >
+                <Call slot={"icon"} />
+            </Button>
         </div>
     </div>
 
