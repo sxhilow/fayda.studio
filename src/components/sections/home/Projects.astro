@@ -3,8 +3,7 @@ import Pill from "@ui/Pill.astro"
 import Case from "@icons/Case.svg"
 import Section from "@ui/Section.astro"
 import ProjectCard from "@ui/ProjectCard.astro"
-import Edupath from "@images/projects/edupath.png"
-import PFP from "@images/pfp.png"
+import {projects} from "@data/projects"
 ---
 
 <Section>
@@ -22,13 +21,18 @@ import PFP from "@images/pfp.png"
         </div>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-        <ProjectCard
-            title="do4you — Visa Form-Filling Service"
-            url="https://do4you.co.za"
-            image={Edupath},
-            alt="Image"
-        />
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-5 gap-y-10">
+        {
+            projects.map((project) => (
+                <ProjectCard
+                    title={project.title}
+                    url={project.url}
+                    image={project.image},
+                    alt={project.alt},
+                    tags={project.tags}
+                />
+            ))
+        }
     </div>
 
 

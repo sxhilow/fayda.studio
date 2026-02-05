@@ -1,27 +1,20 @@
 ---
+import type { ProjectTag } from "@data/projects";
 import { Image } from "astro:assets";
 
 interface Props {
   title: string;
   image: ImageMetadata;
   url: string;
-  tags?: [];
+  tags?: ProjectTag[];
   alt: string;
 }
 
-const {
-  title,
-  image,
-  url,
-  tags = ["Design", "Design", "Design"],
-  alt,
-} = Astro.props;
+const { title, image, url, tags = ["Design"], alt } = Astro.props;
 ---
 
 <a href={url} class="block group">
-
   <div class="overflow-hidden flex flex-col gap-4">
-
     <div
       class="group relative aspect-3/2 w-full overflow-hidden rounded-xl border border-neutral-12"
     >
@@ -32,25 +25,25 @@ const {
         class="h-full w-full object-cover object-top transition-[object-position] duration-6000 ease-in-out group-hover:object-bottom"
       />
     </div>
-  </div>
 
-  <div class="">
-    <h3
-      class="group-hover:text-neutral-7 text-white text-body-lg font-semibold transition duration-300"
-    >
-      {title}
-    </h3>
-    {
-      tags.map((item, index) => (
-        <span class="text-body-md text-neutral-7 font-light group-hover:text-neutral-11 transition duration-300">
-          {item}
-          {index < tags.length - 1 && (
-            <span class="mx-1" aria-hidden="true">
-              •
-            </span>
-          )}
-        </span>
-      ))
-    }
+    <div class="">
+      <h3
+        class="group-hover:text-neutral-7 text-white text-body-lg font-semibold transition duration-300"
+      >
+        {title}
+      </h3>
+      {
+        tags.map((item, index) => (
+          <span class="text-body-md text-neutral-7 font-light group-hover:text-neutral-11 transition duration-300">
+            {item}
+            {index < tags.length - 1 && (
+              <span class="mx-1" aria-hidden="true">
+                •
+              </span>
+            )}
+          </span>
+        ))
+      }
+    </div>
   </div>
 </a>
