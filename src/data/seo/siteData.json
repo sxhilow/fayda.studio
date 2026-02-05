@@ -1,7 +1,7 @@
 {
   "title": "Fayda Studio — Modern Web Development Agency",
-  "description": "We build fast, modern, conversion-focused websites and full-stack solutions using React, Next.js, and Astro. Web development agency based in South Africa.",
-  "keywords": "web development South Africa, website agency, React development, Next.js, Astro, conversion-focused websites, website design, design websites",
+  "description": "We build fast, modern, conversion-focused websites and full-stack solutions using modern Technology. Web development agency based in South Africa.",
+  "keywords": "web development South Africa, website agency, React development, Next.js, Astro, conversion-focused websites, website design, design websites, website development, website coding, modern website, 3d websites",
   "image": {
     "src": "/images/og-preview.png",
     "alt": "Fayda Studio - Web Development Agency",
@@ -21,6 +21,11 @@
     "instagram": ""
   },
   "services": [
+    "Website Revamp",
+    "Website Redesign",
+    "Website Design",
+    "UI/UX Design",
+    "Branding",
     "Website Development",
     "E-commerce Solutions",
     "Web Application Development",

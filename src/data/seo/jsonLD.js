@@ -3,14 +3,21 @@ export default function jsonLDGenerator({
   description, 
   url, 
   image,
-  type = 'Organization', // Allow different types per page
-  services = ["Website Development",
+  type = 'Organization',
+  services = [
+    "Website Revamp",
+    "Website Redesign",
+    "Website Design",
+    "UI/UX Design",
+    "Branding",
+    "Website Development",
     "E-commerce Solutions",
     "Web Application Development",
     "SEO Optimization",
     "Website Maintenance",
-    "Performance Optimization"], // Add services you offer
-  socialProfiles = [] // Social media URLs
+    "Performance Optimization"
+  ], 
+  socialProfiles = []
 }) {
   
   const baseSchema = {
@@ -25,11 +32,9 @@ export default function jsonLDGenerator({
     "address": {
       "@type": "PostalAddress",
       "addressCountry": "ZA",
-      // Add more address details if available
     }
   };
 
-  // Add services if provided
   if (services.length > 0 && type === 'Organization') {
     baseSchema.hasOfferCatalog = {
       "@type": "OfferCatalog",
@@ -45,7 +50,7 @@ export default function jsonLDGenerator({
     };
   }
 
-  // Add social profiles
+
   if (socialProfiles.length > 0) {
     baseSchema.sameAs = socialProfiles;
   }
@@ -53,16 +58,16 @@ export default function jsonLDGenerator({
   // Add LocalBusiness properties if applicable
   if (type === 'LocalBusiness') {
     Object.assign(baseSchema, {
-      "priceRange": "$$$",
+      // "priceRange": "$$$",
       "openingHours": "Mo-Fr 09:00-17:00",
-      "telephone": "+27-XXX-XXXX" // Add your phone
+      "telephone": "+27721356764"
     });
   }
 
   return baseSchema;
 }
 
-// You can also add specific schema generators
+
 export function generateWebSiteSchema({ url, searchUrl, name }) {
   return {
     "@context": "https://schema.org",

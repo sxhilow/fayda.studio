@@ -1,7 +1,7 @@
 ---
 import "../styles/global.css";
 
-import siteData from "../data/siteData.json";
+import siteData from "@data/seo/siteData.json";
 import Header from "@chrome/Header.astro";
 import Footer from "@chrome/Footer.astro";
 import Seo from "@components/seo/Seo.astro";
@@ -24,7 +24,7 @@ const {
 			name="google-site-verification"
 			content="gze7DFkTyFk9w5oDHQc9r7_mDgvLdFKdteAXLEoFxAE"
 		/>
-		<link rel="icon" type="image/svg+xml" href="/Logo.svg" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<meta name="description" content={description} />
 		<title>{title}</title>
@@ -48,7 +48,6 @@ const {
 			<Footer />
 		</div>
 
-		<!-- header bg -->
 		<script is:inline>
 			let lastScrollY = window.scrollY;
 			const navbar = document.getElementById("navbar");
@@ -56,7 +55,7 @@ const {
 			window.addEventListener("scroll", () => {
 				const currentScrollY = window.scrollY;
 
-				if (currentScrollY > lastScrollY && currentScrollY > 30) {
+				if (currentScrollY > lastScrollY && currentScrollY > 80) {
 				// scrolling down = hide
 				navbar.style.transform = "translateY(-100%)";
 				} else {
