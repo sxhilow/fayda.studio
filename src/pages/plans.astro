@@ -1,0 +1,19 @@
+---
+import Layout from "@layouts/Layout.astro"
+import FAQs from "@sections/FAQs.astro";
+import PlansSection from "@sections/Plans.astro"
+import Contact from "@sections/Contact.astro";
+
+const pageTitle = "Our Plans | Fayda Studio";
+const pageDescription = "Explore Fayda Studio's specialized plans for Website Revamps, Custom Development, and MVPs. Tailored digital solutions to boost your brand's performance.";
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+
+    <PlansSection />
+
+    <FAQs/>
+
+    <Contact/>
+
+</Layout>

@@ -1,45 +1,92 @@
 ---
-import { plans } from "../../data";
+import PageHeader from "@ui/PageHeader.astro";
+import Section from "@ui/Section.astro";
+import Flash from "@icons/Flash.svg";
 import PlanCard from "@ui/PlanCard.astro";
+import { plansData } from "@data/plans";
 import CTA from "@ui/CTA.astro";
+import UpRight from "@icons/UpRight.svg"
 ---
 
-<section id="plans" class="scroll-mt-24 my-10 md:my-16 px-5">
-    <div class="text-center -space-y-2">
-        <h1 class="plans-h1 text-desktop-h3 text-neutral">Plans</h1>
-        <p class="plans-p text-lg md:text-xl font-light text-neutral">
-            Launch, grow, scale — pick the plan that fits your goals.
-        </p>
+<Section>
+    <PageHeader
+        pillLabel="Choose Your Plan"
+        pillIcon={Flash}
+        description="World-class design without the big agency markup. Choose a plan tailored for your growth."
+    >
+        <Fragment slot={"title"}>
+            Simple, Transparent <span class="text-brand-red">Plans</span>
+        </Fragment>
+    </PageHeader>
+
+    <div class="flex justify-center items-center mt-10">
+        <div class="bg-brand-blue/5 inline-flex p-2 gap-2 rounded-2xl">
+            {
+                plansData.map((category, index) => (
+                    <button
+                        data-target={category.id}
+                        data-active={index === 1 ? "true" : "false"}
+                        class="tab-btn px-4 py-3 rounded-lg transition-all duration-200 cursor-pointer border text-gray-400 border-neutral-12 data-[active=true]:border-brand-blue data-[active=true]:text-brand-surface"
+                    >
+                        {category.label}
+                    </button>
+                ))
+            }
+        </div>
     </div>
 
-    <div
-        class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 max-sm:gap-10 max-md:gap-4 lg:gap-8 my-12"
-    >
+    <div id="plans-container">
         {
-            plans.map((plan) => (
-                <PlanCard
-                    tag={plan.tag}
-                    title={plan.title}
-                    description={plan.description}
-                    features={plan.features}
-                    tagClass={plan.tagColors}
-                />
+            plansData.map((category, index) => (
+                <div
+                    id={category.id}
+                    class={`grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 plan-group ${index !== 1 ? "hidden" : ""}`}
+                >
+                    {category.plans.map((plan) => (
+                        <PlanCard
+                            title={plan.title}
+                            description={plan.description}
+                            features={plan.features}
+                            popular={plan.popular}
+                        />
+                    ))}
+                </div>
             ))
         }
     </div>
 
-    <CTA
-        textBefore="Not sure where to start? Let’s"
-        textAfter="it out together"
-        highlight="figure"
-        buttonText="Book a quick chat"
-        buttonHref="#contact"
-    />
-</section>
+    <div class="lg:mt-20">
+        <CTA
+            description="Whether you need a full MVP or just a hero-section facelift, we are happy to look at your current site and give you some honest feedback"
+            url="/contact"
+            buttonLabel="Book a free call"
+            buttonVariant="filled"
+            buttonIcon={UpRight}
+            class="text-brand-surface"
+        >
+            <Fragment slot={"title"}>
+                Not sure where to start?
+                <span class="text-brand-blue">Let’s brainstorm.</span>
+            </Fragment>
+        </CTA>
+    </div>
+</Section>
 
 <script>
-    import { plansAnimation } from "../../animations/Plans";
-    import { ctaAnimations } from "../../animations/CTA";
-    plansAnimation();
-    ctaAnimations();
+    const buttons = document.querySelectorAll(".tab-btn");
+    const groups = document.querySelectorAll(".plan-group");
+
+    buttons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+            const target = btn.getAttribute("data-target");
+
+            groups.forEach((group) => {
+                group.classList.toggle("hidden", group.id !== target);
+            });
+
+            buttons.forEach((b) => {
+                b.setAttribute("data-active", b === btn ? "true" : "false");
+            });
+        });
+    });
 </script>

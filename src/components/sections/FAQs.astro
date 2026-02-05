@@ -1,25 +1,28 @@
 ---
-import { faqs } from "../../data";
-import FAQ from "@ui/FAQ.astro";
+import { faqs } from "@data/faqs";
+import FaqItem from "@ui/FaqItem.astro";
 ---
 
 <section id="faqs" class="scroll-mt-24 my-10 md:my-16 px-5">
-   <div class="text-center -space-y-2 max-w-3xl mx-auto">
-      <h1 class="faqs-h1 text-desktop-h3 text-neutral">
-         FAQ – Everything You Need to Know
-      </h1>
-      <p class="faqs-p text-lg md:text-xl font-light text-neutral">
-         Got questions? We’ve got answers. Building websites can be confusing,
-         so we made this FAQ to clear things up — quickly and honestly.
-      </p>
-   </div>
+
+      <div class="space-y-2 text-center max-w-3xl mx-auto">
+         <h1 class="text-h2 text-brand-surface">
+            FAQ – Everything You Need to Know
+         </h1>
+         <p class="text-brand-surface font-light">
+            Got questions? We’ve got answers. Building websites can be
+            confusing, so we made this FAQ to clear things up — quickly and
+            honestly.
+         </p>
+      </div>
+ 
+      
 
    <div class="flex flex-col max-w-6xl mx-auto my-12 gap-3">
-      {faqs.map((faq) => <FAQ question={faq.question} answer={faq.answer} />)}
+      {
+         faqs.map((faq) => (
+            <FaqItem question={faq.question} answer={faq.answer} />
+         ))
+      }
    </div>
 </section>
-
-<script>
-   import { faqsAnimations } from "../../animations/FAQ";
-   faqsAnimations();
-</script>
