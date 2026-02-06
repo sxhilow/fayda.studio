@@ -1,7 +1,7 @@
-import Service1 from "@images/services/service1.png";
-import Service2 from "@images/services/service2.png";
-import Service3 from "@images/services/service3.png";
-import Service4 from "@images/services/service4.png";
+import Service1 from "@images/services/service1.webp";
+import Service2 from "@images/services/service2.webp";
+import Service3 from "@images/services/service3.webp";
+import Service4 from "@images/services/service4.webp";
 
 type ServicesProps = {
     title: string,

@@ -1,6 +1,6 @@
-import Do4You from "@images/projects/do4you.png"
-import EduPath from "@images/projects/edupath.png"
-import ApexSolar from "@images/projects/apexsolar.png"
+import Do4You from "@images/projects/do4you.webp"
+import EduPath from "@images/projects/edupath.webp"
+import ApexSolar from "@images/projects/apexsolar.webp"
 
 export type ProjectTag = "Branding" | "Design" | "Development" | "Launch";
 
