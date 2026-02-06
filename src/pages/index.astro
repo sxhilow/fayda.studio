@@ -1,24 +1,23 @@
 ---
-import Hero from '../components/sections/Hero.astro';
-import Plans from '../components/sections/Plans.astro';
-import Services from '../components/sections/FeaturedService.astro';
-import Layout from '../layouts/Layout.astro';
-import Contact from '../components/sections/Contact.astro';
-import FAQs from '../components/sections/FAQs.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Hero from "@sections/home/Hero.astro";
+import TechMarquee from "@ui/TechMarquee.astro";
+import WhyUs from "@sections/home/WhyUs.astro";
+import Projects from "@sections/home/Projects.astro";
+import Process from "@sections/home/Process.astro";
+import Layout from "@layouts/Layout.astro";
+import Contact from "@sections/Contact.astro";
 ---
 
 <Layout>
 	<Hero />
 
-	<Services/>
+	<TechMarquee />
 
-	<Plans/>
+	<WhyUs />
 
-	<Contact/>
+	<Projects />
 
-	<FAQs/>
+	<Process />
 
+	<Contact />
 </Layout>

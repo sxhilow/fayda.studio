@@ -1,61 +1,53 @@
 ---
-import { Image } from "astro:assets"
-import Down from "../../assets/icons/Down.svg"
-import ServiceDetails from "../molecules/ServiceDetails.astro"
-import CTA from "../molecules/CTA.astro"
-import { detailedServices } from "../../constant"
+import Section from "@ui/Section.astro";
+import PageHeader from "@ui/PageHeader.astro";
+import Layers from "@icons/Layers.svg";
+import ServiceCard from "@ui/ServiceCard.astro";
+import { services } from "@data/services";
+import CTA from "@ui/CTA.astro";
+import UpRight from "@icons/UpRight.svg";
 ---
-<section class="flex flex-col px-2 gap-2">
 
-    <div class="services-header bg-neutral py-10 flex flex-col justify-center items-center px-5 rounded-lg">
+<Section>
+    <PageHeader
+        pillLabel="Modern Web Solutions"
+        pillIcon={Layers}
+        description="Big agency results without the big agency prices. We deliver top-tier craftsmanship with the speed and agility of a small studio."
+    >
+        <Fragment slot={"title"}>
+            Our <span class="text-brand-red">Services</span>
+        </Fragment>
+    </PageHeader>
 
-        <div class=" flex justify-center items-center">
-            <h1 class="services-h1 inline-block text-transparent [-webkit-text-stroke:1px_#F39C12] text-7xl lg:text-9xl">
-                Services
-            </h1>
-
-            <h3 class="services-h3 absolute max-sm:text-mobile-h2 text-desktop-h2 font-bold text-primary-orange mt-5">
-                Services
-            </h3>
-        </div>
-
-        <p class="services-p text-neutral2 max-w-3xl mx-auto text-center font-light">
-            Our team combines creativity, technology, and strategy to deliver websites and web apps that look amazing and perform flawlessly.
-        </p>
-
-
-    </div>
-
-    <div class="w-full text-neutral bg-white rounded-xl">
-
-
+    <div class="w-full flex flex-col gap-16 lg:gap-32">
         {
-            detailedServices.map(service => (
-                <ServiceDetails 
-                    title={service.title} 
-                    idealFor={service.idealFor} 
-                    items={service.offer} 
-                    whyItMatters={service.whyItMatters}
-                    reverse={service.layout === "reverse"}
-                    visual={service.visual}
+            services.map((service, index) => (
+                <ServiceCard
+                    title={service.title}
+                    subtitle={service.subtitle}
+                    description={service.description}
+                    deliverables={service.deliverables}
+                    image={service.image}
+                    alt={service.alt}
+                    isLeft={(index + 1) % 2 === 0}
                 />
             ))
         }
-
     </div>
 
-
-    <div class="md:mt-20">
-        <CTA textBefore="Let’s Create Something" textAfter="Together!" highlight="Amazing" buttonText="Schedule a Call" buttonHref="/#contact"/>
+    <div class="mt-20">
+        <CTA
+            description="Whether you need a full MVP or just a hero-section facelift, we are happy to look at your current site and give you some honest feedback"
+            url="/contact"
+            buttonLabel="Book a free call"
+            buttonVariant="filled"
+            buttonIcon={UpRight}
+            class="text-brand-surface"
+        >
+            <Fragment slot={"title"}>
+                Not sure where to start?
+                <span class="text-brand-blue">Let’s brainstorm.</span>
+            </Fragment>
+        </CTA>
     </div>
-
-
-
-</section>
-
-<script>
-    import { serviceAnimation } from "../../animations/Service";
-    import { ctaAnimations } from "../../animations/CTA";
-    serviceAnimation();
-    ctaAnimations();
-</script>
+</Section>

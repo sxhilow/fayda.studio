@@ -1,25 +1,39 @@
 ---
-import CalCalander from "../molecules/CalCalander.astro";
+import Booking from "@ui/Booking.astro";
+import Section from "@ui/Section.astro";
+import PageHeader from "@ui/PageHeader.astro";
+import AddUser from "@icons/AddUser.svg"
+
+interface Props {
+    variant?: "page" | "footer" 
+}
+
+const {
+    variant = "footer"
+} = Astro.props
 ---
 
-<section id="contact" class="scroll-mt-24 my-10 md:my-16 px-5">
+<Section >
+    {
+        variant === "page" ? (
+            <PageHeader
+                pillLabel="Get in Touch"
+                pillIcon={AddUser}
+                description="Have a project in mind? Book a call directly into my calendar."
+            >
+                <Fragment slot={"title"}>
+                    Let’s Build Something <span class="text-brand-red">Great</span>
+                </Fragment>
+            </PageHeader>
+        ) : (
+            <h1 class="text-h2 text-brand-surface text-center max-w-lg mx-auto">
+                Have a Project in mind? <span class="text-neutral-7">Let's talk</span>
+            </h1>
+        )
+    }
 
-    <div class="text-center -space-y-2 max-w-3xl mx-auto">
-
-        <h1 class="contact-h1 text-desktop-h3 text-neutral">Book a Call Today</h1>
-        <p class="contact-p text-lg md:text-xl font-light text-neutral">Schedule your FREE strategy call and discover how we can execute your vision with precision.</p>
-
+    <div class="max-w-7xl mx-auto rounded my-8">
+        <Booking />
     </div>
+</Section>
 
-    <div class="max-w-6xl mx-auto rounded my-12">
-        
-        <CalCalander/>
-
-    </div>
-
-</section>
-
-<script>
-    import {contactAnimation} from "../../animations/Contact"
-    contactAnimation()
-</script>

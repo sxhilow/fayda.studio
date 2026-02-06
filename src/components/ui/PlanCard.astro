@@ -1,0 +1,66 @@
+---
+import Button from "./Button.astro";
+import Check from "../../assets/icons/Check.svg";
+import Star from "@icons/Star.svg"
+
+interface Props{
+    title: string;
+    description: string;
+    features: Array<string>;
+    popular?: boolean
+}
+
+const {
+    title,
+    description,
+    features = [],
+    popular
+} = Astro.props
+---
+
+<div class={`shadow-sm border rounded-lg flex flex-col p-8 h-full justify-between gap-8 hover:bg-neutral-12/10 transition duration-300 bg-linear-to-b ${popular ? "border-blue-900 from-brand-blue/5 to-brand-neutral/5" : "border-neutral-12 "}`}
+>
+    <div class="relative flex flex-col gap-8 text-neutral">
+
+        <div class="relative flex flex-col gap-1 min-h-32">
+            <h1 class="text-h3 font-semibold text-brand-surface">
+                {title}
+            </h1>
+            <p class="text-body-md font-light text-neutral-7">
+                Best for: {description}
+            </p>
+        </div>
+
+        {
+            popular && (
+                <div class="absolute right-0">
+                    <Star/>
+                </div>
+            )
+        }
+
+        <div class="flex flex-wrap flex-col text-brand-surface gap-4">
+            <span class="font-semibold">Includes:</span>
+
+            <ul class="space-y-2">
+                {
+                    features.map((feat: string) => (
+                        <li class="flex items-center gap-2 font-light">
+                            <Check />
+                            <span>{feat}</span>
+                        </li>
+                    ))
+                }
+            </ul>
+        </div>
+    </div>
+
+    <div class="w-full">
+        <Button
+            label="Contact for Pricing"
+            href={'/contact'}
+            variant="outline"
+            class="w-full"
+        />
+    </div>
+</div>

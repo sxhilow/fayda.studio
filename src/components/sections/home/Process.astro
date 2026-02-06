@@ -1,0 +1,107 @@
+---
+import Pill from "@ui/Pill.astro";
+import Pen from "@icons/Pen.svg";
+import ProcessCard from "@ui/ProcessCard.astro";
+import { processSteps } from "@data/process";
+import CTA from "@ui/CTA.astro";
+import UpRight from "@icons/UpRight.svg"
+---
+
+<section class="bg-brand-surface rounded-4xl">
+    <div
+        class="relative max-w-7xl mx-auto py-20 space-y-8 lg:space-y-16 px-5 xl:px-0"
+    >
+        <div class="space-y-4">
+            <Pill label="Work process" class="text-neutral-10">
+                <Pen slot={"icon"} />
+            </Pill>
+
+            <div class="space-y-2">
+                <h1 class="text-h1 text-brand-neutral">How We Work</h1>
+                <p class="text-brand-neutral font-light">
+                    From first call to launch day, we guide you through every
+                    step.
+                </p>
+            </div>
+        </div>
+
+        <div class="relative">
+            <div
+                class="absolute left-1/2 transform -translate-x-1/2 h-[80%] w-0.5 bg-neutral-5 z-0 hidden md:block"
+            >
+            </div>
+
+            <div class="space-y-4 md:space-y-0">
+                {
+                    processSteps.map((step, index) => (
+                        <div
+                            data-step={index}
+                            class={`process-row flex w-full md:mb-12 items-start ${index % 2 === 0 ? "justify-end" : "justify-start"}`}
+                        >
+                            <ProcessCard
+                                title={step.title}
+                                description={step.description}
+                                class="process-step"
+                            />
+
+                            <div
+                                data-dot={index}
+                                class="step-dot absolute left-1/2 -translate-x-1/2 w-12 h-12 rounded-full bg-brand-surface border-2 border-neutral-5 hidden md:flex items-center justify-center transition-all duration-500 ease-in-out z-10"
+                            >
+                                <span class="block w-8 h-8 rounded-full bg-white/50 transition-all duration-500 dot-inner" />
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+
+
+        <CTA
+            description="Let's chat about your project. No pressure, just a friendly conversation to see if we're a good fit."
+            url="/contact"
+            buttonLabel="Book a free call"
+            buttonVariant="filled"
+            buttonIcon={UpRight}
+            class="text-brand-neutral"
+        >  
+            <Fragment slot={'title'}>
+                Ready to upgrade your <span class="text-brand-blue">online presence?</span>
+            </Fragment>
+        </CTA>
+    </div>
+</section>
+
+<script>
+    const observerOptions = {
+        root: null, 
+        rootMargin: "-50% 0px -50% 0px", 
+        threshold: 0,
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            const index = entry.target.getAttribute("data-step");
+            const dot = document.querySelector(`[data-dot="${index}"]`);
+            const innerDot = dot?.querySelector(".dot-inner");
+
+            if (entry.isIntersecting) {
+                // ACTIVATE: Card is in the middle
+                dot?.classList.add("border-brand-neutral", "scale-110");
+                innerDot?.classList.remove("bg-white/50", "scale-110");
+                innerDot?.classList.add("bg-brand-neutral", "scale-125");
+                
+            } else {
+                // DEACTIVATE: Card has moved away
+                dot?.classList.remove("border-brand-neutral", "scale-110");
+                innerDot?.classList.remove("bg-brand-neutral", "scale-125");
+                innerDot?.classList.add("bg-white/50", "scale-110");
+            }
+        });
+    }, observerOptions);
+
+    // Start watching all rows
+    document
+        .querySelectorAll(".process-row")
+        .forEach((row) => observer.observe(row));
+</script>

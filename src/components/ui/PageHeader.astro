@@ -1,0 +1,28 @@
+---
+import Pill from "@ui/Pill.astro";
+
+interface Props {
+    pillLabel: string;
+    pillIcon: any;
+    description: string
+}
+
+const {
+    pillLabel,
+    pillIcon: PillIcon,
+    description
+} = Astro.props
+---
+
+<div class="flex flex-col items-center rounded-b-2xl border-x border-b border-neutral-12 py-12 px-2 md:py-20 w-full hover:bg-neutral-12/10 transition-all duration-300 gap-4" >
+    <Pill label={pillLabel}>
+        <PillIcon slot={'icon'}/>
+    </Pill>
+
+    <div class="max-w-3xl mx-auto text-center gap-2">
+        <h1 class="text-h1 text-brand-surface">
+            <slot name="title"/>
+        </h1>
+        <p class="text-body-md text-brand-surface font-light">{description}</p>
+    </div>
+</div>

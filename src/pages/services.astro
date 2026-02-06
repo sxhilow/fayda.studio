@@ -1,13 +1,16 @@
 ---
-import ServicesSection from "../components/sections/Services.astro";
-import WorkProcess from "../components/sections/WorkProcess.astro";
-import Layout from "../layouts/Layout.astro";
+import ServicesSection from "@sections/Services.astro";
+import Layout from "@layouts/Layout.astro";
+import Contact from "@sections/Contact.astro";
+
+const pageTitle = "Our Services - Fayda Studio";
+const pageDescription = "Discover the range of services offered by Fayda Studio, including web design, development, and custom app solutions tailored to your business needs.";
 ---
 
-<Layout title="Our Services - Fayda Studio" description="Discover the range of services offered by Fayda Studio, including web design, development, and custom app solutions tailored to your business needs.">
+<Layout title={pageTitle} description={pageDescription}>
 
     <ServicesSection />
 
-    <WorkProcess />
+    <Contact />
 
 </Layout>

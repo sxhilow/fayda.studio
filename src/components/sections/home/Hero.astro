@@ -1,0 +1,127 @@
+---
+import Pill from "@ui/Pill.astro";
+import Rocket from "@icons/Rocket.svg";
+import Button from "@ui/Button.astro";
+import Right from "@icons/Right.svg";
+import Check from "@icons/Check.svg";
+import Close from "@icons/Close.svg";
+import { comparisonTableData } from "@data/why-us";
+---
+
+<section class="border-b border-neutral-12">
+    <div class="flex max-md:flex-col min-h-screen">
+        <div
+            class="flex-1 min-w-0 border-b lg:border-b-0 md:border-r border-neutral-12 max-lg:pt-34 max-md:pb-8 flex flex-col justify-center items-start px-5"
+        >
+            <div class="xl:pl-15 space-y-8">
+                <Pill label="Trusted by businesses & startups">
+                    <Rocket slot="icon" />
+                </Pill>
+
+                <div class="space-y-2">
+                    <h1 class="text-brand-surface text-display-lg">
+                        We Design and Build Modern
+                        <span
+                            class="font-secondary text-brand-red tracking-normal font-semibold"
+                        >
+                            Websites
+                        </span>
+                    </h1>
+
+                    <p class="text-brand-surface font-light text-body-md">
+                        Stop losing customers to slow, outdated websites. We
+                        create custom-coded, high-performance digital
+                        experiences that look great on every device.
+                    </p>
+                </div>
+
+                <div class="flex max-sm:flex-col w-full gap-4">
+                    <Button
+                        href="/services"
+                        label="Explore Our Services"
+                        class=""
+                    />
+                    <Button
+                        href="/#work"
+                        label="See Our Work"
+                        variant="outline"
+                    />
+                </div>
+            </div>
+        </div>
+
+        <div class="flex-1 min-w-0 flex flex-col w-full">
+            <div
+                class="flex-3/4 flex flex-col justify-center items-center md:pt-32 border-b border-neutral-12"
+            >
+                <div class="py-5 px-5 xl:px-20 w-full">
+                    <div class="overflow-x-auto w-full">
+                        <table
+                            class="w-full min-w-[350px] bg-linear-to-b from-brand-blue/10 to-blue-900/10 rounded-2xl overflow-hidden"
+                        >
+                            <caption
+                                class="text-brand-surface text-body-lg font-medium"
+                            >
+                                What <span class="text-brand-blue">Set us</span> Apart
+                            </caption>
+
+                            <thead>
+                                <tr class="text-brand-surface">
+                                    <th class="font-semibold px-4 py-4"
+                                        >Features</th
+                                    >
+                                    <th
+                                        class="font-semibold text-brand-red px-4 py-4"
+                                        >Fayda.studio</th
+                                    >
+                                    <th class="font-semibold px-4 py-4"
+                                        >Typical Agencies</th
+                                    >
+                                </tr>
+                            </thead>
+
+                            <tbody class="bg-brand-blue/5 rounded-2xl">
+                                {
+                                    comparisonTableData.map((row) => (
+                                        <tr class="text-brand-surface text-xs sm:text-sm border-b border-blue-900 last:border-b-0">
+                                            <td class="font-light py-2 px-4">
+                                                {row.feature}
+                                            </td>
+
+                                            <td class="py-2 px-4 font-light">
+                                                <div class="flex items-center gap-2">
+                                                    <Check />
+                                                    <span>{row.us}</span>
+                                                </div>
+                                            </td>
+
+                                            <td class="py-2 px-4 font-light">
+                                                <div class="flex items-center gap-2">
+                                                    <Close />
+                                                    <span>{row.them}</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    ))
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                class="flex-1/4 flex justify-center items-center gap-2 group py-8 px-5"
+            >
+                <Button
+                    href="/contact"
+                    label="Book a free Discovery Call"
+                    variant="ghost"
+                    class="text-neutral-7 font-secondary text-h3 animate-bounce group-hover:[animation-play-state:paused] group-hover:text-brand-surface transition-all duration-150 gap-4"
+                >
+                    <Right slot={"icon"} />
+                </Button>
+            </div>
+        </div>
+    </div>
+</section>
