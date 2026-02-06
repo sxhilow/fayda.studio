@@ -9,32 +9,28 @@ import Dollar from "@images/why-us/dollar.webp";
 import Section from "@ui/Section.astro";
 import Button from "@ui/Button.astro";
 import Call from "@icons/Call.svg";
+import Heading from "@ui/Heading.astro";
 ---
 
 <Section id="whyus">
-    <div class="space-y-4">
-        <Pill label="Why Fayda">
-            <Star slot={"icon"} />
-        </Pill>
+    <div class="flex justify-between items-end">
+        <Heading
+            pillLabel="Why Fayda"
+            pillIcon={Star}
+            title="Why work with us?"
+            description="We design fast, modern websites that are built to perform."
+            isLeft
+        />
 
-        <div class="flex justify-between items-end">
-            <div class="space-y-2">
-                <h1 class="text-h1 text-brand-surface">Why work with us?</h1>
-                <p class="text-brand-surface font-light">
-                    We design fast, modern websites that are built to perform.
-                </p>
-            </div>
-
-            <Button
-                label={"Let’s discuss your project"}
-                href={"/contact"}
-                variant="outline"
-                iconPosition="left"
-                class={'max-sm:hidden'}
-            >
-                <Call slot={"icon"} />
-            </Button>
-        </div>
+        <Button
+            label={"Let’s discuss your project"}
+            href={"/contact"}
+            variant="outline"
+            iconPosition="left"
+            class={"max-sm:hidden"}
+        >
+            <Call slot={"icon"} />
+        </Button>
     </div>
 
     <div class="grid grid-cols-12 gap-5 auto-rows-[164px]">

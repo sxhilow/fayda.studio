@@ -1,22 +1,19 @@
 ---
 import { faqs } from "@data/faqs";
 import FaqItem from "@ui/FaqItem.astro";
+import Info from "@icons/Info.svg";
+import Heading from "@ui/Heading.astro";
+import Section from "@ui/Section.astro";
 ---
 
-<section id="faqs" class="scroll-mt-24 my-10 md:my-16 px-5">
+<Section id="faqs">
 
-      <div class="space-y-2 text-center max-w-3xl mx-auto">
-         <h1 class="text-h2 text-brand-surface">
-            FAQ – Everything You Need to Know
-         </h1>
-         <p class="text-brand-surface font-light">
-            Got questions? We’ve got answers. Building websites can be
-            confusing, so we made this FAQ to clear things up — quickly and
-            honestly.
-         </p>
-      </div>
- 
-      
+   <Heading
+      pillLabel="Your Questions Answered"
+      pillIcon={Info}
+      title="FAQ – Everything You Need to Know"
+      description=" Got questions? We’ve got answers. Building websites can be confusing, so we made this FAQ to clear things up — quickly and honestly."
+   />
 
    <div class="flex flex-col max-w-6xl mx-auto my-12 gap-3">
       {
@@ -25,4 +22,4 @@ import FaqItem from "@ui/FaqItem.astro";
          ))
       }
    </div>
-</section>
+</Section>

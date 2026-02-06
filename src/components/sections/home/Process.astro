@@ -1,29 +1,25 @@
 ---
-import Pill from "@ui/Pill.astro";
 import Pen from "@icons/Pen.svg";
 import ProcessCard from "@ui/ProcessCard.astro";
 import { processSteps } from "@data/process";
 import CTA from "@ui/CTA.astro";
 import UpRight from "@icons/UpRight.svg"
+import Heading from "@ui/Heading.astro";
 ---
 
 <section class="bg-brand-surface rounded-4xl">
     <div
         class="relative max-w-7xl mx-auto py-20 space-y-8 lg:space-y-16 px-5 xl:px-0"
     >
-        <div class="space-y-4">
-            <Pill label="Work process" class="text-neutral-10">
-                <Pen slot={"icon"} />
-            </Pill>
-
-            <div class="space-y-2">
-                <h1 class="text-h1 text-brand-neutral">How We Work</h1>
-                <p class="text-brand-neutral font-light">
-                    From first call to launch day, we guide you through every
-                    step.
-                </p>
-            </div>
-        </div>
+        <Heading
+            pillLabel="Work process"
+            pillIcon={Pen}
+            title="How We Work"
+            description=" From first call to launch day, we guide you through every step."
+            isLeft
+            class="text-brand-neutral"
+            theme="light"
+        />
 
         <div class="relative">
             <div

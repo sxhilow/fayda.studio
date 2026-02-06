@@ -1,0 +1,43 @@
+---
+import Pill from "./Pill.astro";
+
+interface Props {
+    pillLabel: string;
+    pillIcon: any,
+    title: string,
+    description: string,
+    isLeft?: boolean,
+    class?: string,
+    theme?: "light" | "dark"
+}
+
+const {
+    pillLabel,
+    pillIcon: PillIcon,
+    title,
+    description,
+    isLeft,
+    class: className,
+    theme = "dark",
+} = Astro.props
+
+const colorMap = {
+    light: {text: "text-brand-neutral", desc: "text-neutral-10"},
+    dark: {text: "text-brand-surface", desc: "text-neutral-5"}
+}
+
+const activeClass = colorMap[theme]
+---
+
+<div class={` ${isLeft ? "" : "flex flex-col  justify-center items-center text-center" } space-y-4 ${className}`}>
+    <Pill class={activeClass.desc} label={pillLabel}>
+        <PillIcon slot={"icon"} />
+    </Pill>
+
+    <div class="">
+        <h1 class={`text-h1 ${activeClass.text}`}>{title}</h1>
+        <p class={`${activeClass.desc}`}>
+            {description}
+        </p>
+    </div>
+</div>
