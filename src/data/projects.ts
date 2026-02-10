@@ -22,14 +22,14 @@ export const projects: ProjectProps[] = [
     },
     {
         title: "Apex Solar —  Solar Energy Solutions",
-        url: "https://figma.com", // TODO
+        url: "https://www.figma.com/proto/C5TlHItuv59zzULG9ZTgz6/Projects?page-id=0%3A1&node-id=232-111&p=f&viewport=594%2C222%2C0.07&t=yPDxVwVXNw8xYy7R-1&scaling=min-zoom&content-scaling=fixed",
         image: ApexSolar,
         tags: ["Branding", "Design"],
         alt: "Apex Solar Solutions",
     },
     {
         title: "EduPath — Professional Career Coaching",
-        url: "https://figma.com",
+        url: "https://www.figma.com/proto/C5TlHItuv59zzULG9ZTgz6/Projects?page-id=0%3A1&node-id=232-111&p=f&viewport=594%2C222%2C0.07&t=yPDxVwVXNw8xYy7R-1&scaling=min-zoom&content-scaling=fixed",
         image: EduPath,
         tags: ["Branding", "Design"],
         alt: "EduPath",
