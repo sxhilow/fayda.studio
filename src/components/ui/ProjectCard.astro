@@ -13,7 +13,13 @@ interface Props {
 const { title, image, url, tags = ["Design"], alt } = Astro.props;
 ---
 
-<a href={url} class="block group">
+<a
+  href={url}
+  class="block group"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="See our designs"
+>
   <div class="overflow-hidden flex flex-col gap-4">
     <div
       class="group relative aspect-3/2 w-full overflow-hidden rounded-xl border border-neutral-12"
