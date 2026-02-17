@@ -1,6 +1,6 @@
 ---
-import '@fontsource-variable/inter';
-import '@fontsource/bitcount-single';
+import "@fontsource-variable/inter";
+import "@fontsource/bitcount-single";
 import "../styles/global.css";
 
 import siteData from "@data/seo/siteData.json";
@@ -50,24 +50,36 @@ const {
 			<Footer />
 		</div>
 
-		<script is:inline>
+		<script>
+			import Lenis from "lenis";
+
+			const lenis = new Lenis({
+				duration: 1.2,
+				easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+				orientation: "vertical",
+				smoothWheel: true,
+				wheelMultiplier: 0.8,
+			});
+
+			function raf(time: any) {
+				lenis.raf(time);
+				requestAnimationFrame(raf);
+			}
+			requestAnimationFrame(raf);
+
 			let lastScrollY = window.scrollY;
 			const navbar = document.getElementById("navbar");
 
-			window.addEventListener("scroll", () => {
-				const currentScrollY = window.scrollY;
-
-				if (currentScrollY > lastScrollY && currentScrollY > 80) {
-				// scrolling down = hide
-				navbar.style.transform = "translateY(-100%)";
-				} else {
-				// scrolling up = show
-				navbar.style.transform = "translateY(0)";
+			lenis.on("scroll", ({ scroll }) => {
+				if (navbar) {
+					if (scroll > lastScrollY && scroll > 80) {
+						navbar.style.transform = "translateY(-100%)";
+					} else {
+						navbar.style.transform = "translateY(0)";
+					}
 				}
-
-				lastScrollY = currentScrollY;
+				lastScrollY = scroll;
 			});
 		</script>
-
 	</body>
 </html>
