@@ -3,11 +3,11 @@ import Pen from "@icons/Pen.svg";
 import ProcessCard from "@ui/ProcessCard.astro";
 import { processSteps } from "@data/process";
 import CTA from "@ui/CTA.astro";
-import UpRight from "@icons/UpRight.svg"
+import UpRight from "@icons/UpRight.svg";
 import Heading from "@ui/Heading.astro";
 ---
 
-<section class="bg-brand-surface rounded-4xl">
+<section class="bg-brand-surface rounded-t-4xl">
     <div
         class="relative max-w-7xl mx-auto py-20 space-y-8 lg:space-y-16 px-5 xl:px-0"
     >
@@ -52,7 +52,6 @@ import Heading from "@ui/Heading.astro";
             </div>
         </div>
 
-
         <CTA
             description="Let's chat about your project. No pressure, just a friendly conversation to see if we're a good fit."
             url="/contact"
@@ -60,9 +59,11 @@ import Heading from "@ui/Heading.astro";
             buttonVariant="filled"
             buttonIcon={UpRight}
             class="text-brand-neutral"
-        >  
-            <Fragment slot={'title'}>
-                Ready to upgrade your <span class="text-brand-blue">online presence?</span>
+        >
+            <Fragment slot={"title"}>
+                Ready to upgrade your <span class="text-brand-blue"
+                    >online presence?</span
+                >
             </Fragment>
         </CTA>
     </div>
@@ -70,8 +71,8 @@ import Heading from "@ui/Heading.astro";
 
 <script>
     const observerOptions = {
-        root: null, 
-        rootMargin: "-50% 0px -50% 0px", 
+        root: null,
+        rootMargin: "-50% 0px -50% 0px",
         threshold: 0,
     };
 
@@ -86,7 +87,6 @@ import Heading from "@ui/Heading.astro";
                 dot?.classList.add("border-brand-neutral", "scale-110");
                 innerDot?.classList.remove("bg-white/50", "scale-110");
                 innerDot?.classList.add("bg-brand-neutral", "scale-125");
-                
             } else {
                 // DEACTIVATE: Card has moved away
                 dot?.classList.remove("border-brand-neutral", "scale-110");
