@@ -7,15 +7,15 @@ export const navItems = [
     label: "Home"
   },
   {
-    href: "/services",
+    href: "/services/",
     label: "Services"
   },
   {
-    href: "/plans",
+    href: "/plans/",
     label: "Plans"
   },
   {
-    href: "/contact",
+    href: "/contact/",
     label: "Contact"
   },
 ] as const;
