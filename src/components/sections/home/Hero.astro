@@ -22,7 +22,8 @@ import { comparisonTableData } from "@data/why-us";
                     <h1 class="text-brand-surface text-display-lg">
                         We Design and Build Modern
                         <span
-                            class="font-secondary text-brand-red tracking-normal font-semibold"
+                            class="inline-block font-secondary text-brand-red tracking-normal font-semibold animate-fade-blur-in"
+                            id="rotate-text"
                         >
                             Websites
                         </span>
@@ -125,3 +126,25 @@ import { comparisonTableData } from "@data/why-us";
         </div>
     </div>
 </section>
+
+<script is:inline>
+    const words = ["Websites", "Products", "Dashboards", "Platforms"];
+    let currentIndex = 0;
+    const textEl = document.getElementById("rotate-text");
+
+    function rotate(){
+        textEl.classList.remove("animate-fade-blur-in");
+        textEl.classList.add("animate-fade-blur-out");
+
+        setTimeout(() => {
+            currentIndex = (currentIndex + 1) % words.length;
+            textEl.innerText = words[currentIndex];
+
+
+            textEl.classList.remove("animate-fade-blur-out");
+            textEl.classList.add("animate-fade-blur-in");
+        }, 800); // This delay matches the animation duration in tailwind global.css
+    }
+
+    setInterval(rotate, 2000);
+</script>

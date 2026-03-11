@@ -56,6 +56,8 @@
 
 
   --animate-marquee: marquee 30s linear infinite;
+  --animate-fade-blur-in: fade-blur-in 0.8s ease-out forwards;
+  --animate-fade-blur-out: fade-blur-out 0.8s ease-in forwards;
 
   @keyframes marquee {
     0% {
@@ -64,6 +66,19 @@
 
     100% {
       transform: translateX(-50%);
+    }
+  }
+
+  @keyframes fade-blur-in {
+    0% {
+      opacity: 0; 
+      filter: blur(5px); 
+      transform: translateY(10%);
+    }
+    100% {
+      opacity: 1;
+      filter: blur(0);
+      transform: translateY(0);
     }
   }
 }
