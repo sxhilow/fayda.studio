@@ -19,7 +19,7 @@ export const plansData: PlanCategory[] = [
     plans: [
       {
         title: "Logo & Branding",
-        description: "Best for: Founders with a great product but 'meh' branding that feels outdated.",
+        description: "Founders with a great product but 'meh' branding that feels outdated.",
         features: [
           "Logo Modernization",
           "2 Fresh Logo Concepts",
@@ -29,7 +29,7 @@ export const plansData: PlanCategory[] = [
       },
       {
         title: "Hero Section",
-        description: "Best for: Websites with high bounce rates. Your visitors leave before they even scroll.",
+        description: "Websites with high bounce rates. Your visitors leave before they even scroll.",
         features: [
           "Hero UI Modernization",
           "Conversion Copywriting",
@@ -40,7 +40,7 @@ export const plansData: PlanCategory[] = [
       },
       {
         title: "Full Landing Page",
-        description: "Best for: Marketing sites that need a complete visual reset to convert better.",
+        description: "Marketing sites that need a complete visual reset to convert better.",
         features: [
           "Full Page UI Redesign",
           "Speed Optimization",
@@ -57,7 +57,7 @@ export const plansData: PlanCategory[] = [
     plans: [
       {
         title: "Design Only",
-        description: "Best for: Teams who have developers but need a modern, professional design system.",
+        description: "Teams who have developers but need a modern, professional design system.",
         features: [
           "Sitemap & User Flow",
           "Hi-Fi Wireframes (Figma)",
@@ -69,7 +69,7 @@ export const plansData: PlanCategory[] = [
       },
       {
         title: "Design + Dev",
-        description: "Best for: Founders who have their branding ready but need a high-speed, custom site.",
+        description: "Founders who have their branding ready but need a high-speed, custom site.",
         features: [
           "Everything in Design +",
           "Custom Code (Astro/Next.js)",
@@ -82,7 +82,7 @@ export const plansData: PlanCategory[] = [
       },
       {
         title: "Full Launch",
-        description: "Best for: Starting from scratch. You need a brand and a website that scale.",
+        description: "Starting from scratch. You need a brand and a website that scale.",
         features: [
           "Everything in Design + Dev +",
           "Full Logo Design",
@@ -100,7 +100,7 @@ export const plansData: PlanCategory[] = [
     plans: [
       {
         title: "Design Only",
-        description: "Best for: Teams who have developers but need a modern, professional design system.",
+        description: "Teams who have developers but need a modern, professional design system.",
         features: [
           "Sitemap & User Flow",
           "Hi-Fi Wireframes (Figma)",
@@ -112,7 +112,7 @@ export const plansData: PlanCategory[] = [
       },
       {
         title: "Design + Dev",
-        description: "Best for: Validating a SaaS idea or launching a custom E-com store fast.",
+        description: "Validating a SaaS idea or launching a custom E-com store fast.",
         features: [
           "Everything in Design +",
           "Custom Web App / Shopify Store",
@@ -125,7 +125,7 @@ export const plansData: PlanCategory[] = [
       },
       {
         title: "Full Launch",
-        description: "Best for: Funded startups needing a complete product ecosystem from day one.",
+        description: "Funded startups needing a complete product ecosystem from day one.",
         features: [
           "Everything in Design + Dev +",
           "Full Brand Identity",
