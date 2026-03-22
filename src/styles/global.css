@@ -101,6 +101,11 @@ body {
   background-color: var(--color-brand-neutral);
 }
 
+@utility mask-fade-x {
+    mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+}
+
 @utility text-display-lg {
   /* Mobile: 48px, Bold, -1.44% tracking */
   font-size: 48px;

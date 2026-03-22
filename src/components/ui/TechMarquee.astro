@@ -2,34 +2,15 @@
 import { techIcons } from "@data/why-us";
 ---
 
-
-<div class="relative py-20 space-y-16 overflow-hidden">
-
+<div
+    class="relative py-20 space-y-16 overflow-hidden mask-fade-x"
+>
     <h1 class="text-caption uppercase text-neutral-7 text-center">
         POWERED BY MODERN TECH
     </h1>
 
-    <!-- left fade -->
-    <div class="pointer-events-none absolute left-0 top-0 h-full w-16 lg:w-96 bg-linear-to-r from-brand-neutral to-transparent z-10"></div>
-
-  <!-- right fade -->
-    <div class="pointer-events-none absolute right-0 top-0 h-full w-16 lg:w-96 bg-linear-to-l from-brand-neutral to-transparent z-10"></div>
-    
-    <div class="relative flex justify-center items-center overflow-hidden animate-marquee hover:[animation-play-state:paused] gap-12 w-max">
-
-        
-        {
-            techIcons.map((icon) => (
-                <icon.icon />
-            ))
-        }
-
-        <!-- duplicate for a true "infinite" effect -->
-        {
-            techIcons.map((icon) => (
-                <icon.icon aria-hidden="true"/>
-            ))
-        }
-
+    <div class="relative flex items-center animate-marquee hover:[animation-play-state:paused] gap-12 w-max shrink-0">
+        {techIcons.map((icon) => (<icon.icon />))}
+        {techIcons.map((icon) => (<icon.icon aria-hidden="true"/>))}
     </div>
 </div>
