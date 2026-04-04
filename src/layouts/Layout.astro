@@ -74,7 +74,7 @@ const {
 				if (navbar) {
 					if (scroll > lastScrollY && scroll > 80) {
 						navbar.style.transform = "translateY(-100%)";
-					} else {
+					} else if (scroll < lastScrollY) {
 						navbar.style.transform = "translateY(0)";
 					}
 				}
