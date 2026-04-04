@@ -71,10 +71,11 @@
 
   @keyframes fade-blur-in {
     0% {
-      opacity: 0; 
-      filter: blur(5px); 
+      opacity: 0;
+      filter: blur(5px);
       transform: translateY(10%);
     }
+
     100% {
       opacity: 1;
       filter: blur(0);
@@ -83,12 +84,13 @@
   }
 
   @keyframes fade-blur-out {
-    0% { 
+    0% {
       opacity: 1;
       filter: blur(0);
-      transform: translateY(0) 
+      transform: translateY(0)
     }
-    100% { 
+
+    100% {
       opacity: 0;
       filter: blur(10px);
       transform: translateY(-10%)
@@ -102,8 +104,34 @@ body {
 }
 
 @utility mask-fade-x {
-    mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+}
+
+@layer components {
+  .case-study-body h1 {
+    @apply text-h3 text-brand-surface my-8;
+  }
+
+  .case-study-body h2 {
+    @apply text-body-lg font-bold text-brand-surface my-2;
+  }
+
+  .case-study-body p {
+    @apply text-body-md text-neutral-5 my-2;
+  }
+
+  .case-study-body p + p {
+    @apply mt-6;
+  }
+
+  .case-study-body hr {
+    @apply text-neutral-12 my-8;
+  }
+
+  .case-study-body img {
+    @apply border border-neutral-12 rounded-2xl my-8;
+  }
 }
 
 @utility text-display-lg {

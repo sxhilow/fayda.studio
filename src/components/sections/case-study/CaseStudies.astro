@@ -1,0 +1,37 @@
+---
+import PageHeader from "@ui/PageHeader.astro";
+import Section from "@ui/Section.astro";
+import Laptop from "@icons/Laptop.svg"
+import ProjectCard from "@ui/ProjectCard.astro";
+import { getEnrichedProjects } from "@data/projects";
+
+
+const projects = await getEnrichedProjects();
+const filteredProjects = projects.filter(project => !project.isConcept)
+---
+
+<Section>
+    <PageHeader
+        pillLabel="Digital Craftsmanship"
+        pillIcon={Laptop}
+        description="From initial concept to deployment, explore the technical strategy and design thinking behind our most impactful digital solutions."
+    >
+        <Fragment slot={"title"}>
+            Engineered for <span class="text-brand-red">Impact</span>
+        </Fragment>
+    </PageHeader>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-5 gap-y-10">
+        {
+            filteredProjects.map((project) => (
+                <ProjectCard
+                    title={project.title}
+                    url={project.url}
+                    image={project.image},
+                    alt={project.alt},
+                    tags={project.tags}
+                />
+            ))
+        }
+    </div>
+</Section>
