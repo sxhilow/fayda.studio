@@ -2,8 +2,10 @@
 import Case from "@icons/Case.svg"
 import Section from "@ui/Section.astro"
 import ProjectCard from "@ui/ProjectCard.astro"
-import {projects} from "@data/projects"
 import Heading from "@ui/Heading.astro"
+import { getEnrichedProjects } from "@data/projects"
+
+const projects = await getEnrichedProjects();
 ---
 
 <Section id="work">
