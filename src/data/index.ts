@@ -7,7 +7,7 @@ export const navItems = [
     label: "Home"
   },
   {
-    href: "/case-studies",
+    href: "/case-studies/",
     label: "Case Studies"
   },
   {

@@ -14,6 +14,7 @@ type ProjectProps = {
     tags?: ProjectTag[];
     alt: string;
     isConcept?: boolean
+    isDraft?: boolean
 }
 
 export type EnrichedProjects = ProjectProps & { url: string }
@@ -43,10 +44,11 @@ const projects: ProjectProps[] = [
     },
     {
         title: "do4you — Visa Form-Filling Service",
-        caseStudySlug: "do4you",
+        url: "do4you.co.za",
         image: Do4You,
         tags: ["Branding", "Design", "Development", "Launch"],
-        alt: "do4you.co.za"
+        alt: "do4you.co.za",
+        isDraft: true
     },
     {
         title: "Apex Solar —  Solar Energy Solutions",
