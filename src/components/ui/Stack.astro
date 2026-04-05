@@ -1,0 +1,16 @@
+---
+interface Props {
+    isHorizontal?: boolean;
+    class?: string;
+}
+
+const { isHorizontal, class: className } = Astro.props;
+---
+
+<div class:list={[
+    "flex gap-4 flex-col w-full items-stretch", 
+    isHorizontal && "lg:flex-row",
+    className
+]}>
+    <slot/>
+</div>

@@ -1,21 +1,16 @@
 ---
-import type { ImageMetadata } from "astro";
-import { Image } from "astro:assets";
-
 interface Props {
-    src?: ImageMetadata | string;
-    alt: string;
-    caption?: string;
+    src?: string;
     isVideo?: boolean;
     testimonial?: string;
     testimonialAuthor?: string;
 }
 
-const { src, alt, caption, isVideo, testimonial, testimonialAuthor } =
+const { src, isVideo, testimonial, testimonialAuthor } =
     Astro.props;
 ---
 
-<figure class="flex flex-col my-8">
+<div class="flex flex-col mt-12 mb-8">
     {
         isVideo ? (
             <div class="p-8 rounded-4xl bg-neutral-12/10 border border-neutral-12 flex max-lg:flex-col gap-8">
@@ -26,22 +21,22 @@ const { src, alt, caption, isVideo, testimonial, testimonialAuthor } =
                             controls
                             loop
                             playsinline
-                            class="rounded-2xl w-full lg:min-w-md"
+                            class="rounded-2xl w-full lg:min-w-sm"
                         />
                     </div>
                 )}
                 {testimonial && (
                     <div
                         class:list={[
-                            "flex-2/3 flex flex-col justify-between gap-6",
+                            "flex-2/3 flex flex-col gap-6 lg:my-6",
                             !src && "max-w-2xl mx-auto text-center",
                         ]}
                     >
-                        <span class="text-h3 text-neutral-5">
+                        <span class="text-h3 text-neutral-7">
                             "{testimonial}"
                         </span>
                         {testimonialAuthor && (
-                            <span class="text-neutral-7 text-right">
+                            <span class="text-neutral-7">
                                 — {testimonialAuthor}
                             </span>
                         )}
@@ -49,19 +44,9 @@ const { src, alt, caption, isVideo, testimonial, testimonialAuthor } =
                 )}
             </div>
         ) : (
-            <Image
-                src={src as ImageMetadata}
-                alt={alt}
-                inferSize
-                class="rounded-4xl w-full border border-neutral-12"
-            />
+            <div class="p-8 rounded-4xl bg-neutral-12/10 border border-neutral-12 flex flex-col gap-8">
+                <slot/>
+            </div>
         )
     }
-    {
-        caption && (
-            <figcaption class="text-neutral-7 text-caption text-center">
-                {caption}
-            </figcaption>
-        )
-    }
-</figure>
+</div>

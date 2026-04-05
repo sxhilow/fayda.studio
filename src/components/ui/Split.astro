@@ -1,0 +1,26 @@
+---
+interface Props {
+    layout?: 'left' | 'right' | 'top' | 'bottom';
+}
+const { layout = 'left' } = Astro.props;
+
+const gridMap = {
+  left: `grid-cols-[2fr_1fr]`,
+  right: `grid-cols-[1fr_2fr]`,
+  top: `grid-cols-1`,
+  bottom: `grid-cols-1 grid-row-reverse`,
+};
+---
+
+<div class:list={[
+    "grid w-full gap-4 ",
+    gridMap[layout],
+    "max-lg:grid-cols-1 max-lg:grid-rows-none"
+]}>
+    <div class:list={[layout === 'bottom' && "order-2"]}>
+        <slot name="main"/>
+    </div>
+    <div class:list={[layout === 'bottom' && "order-1"]}>
+        <slot name="extra"/>
+    </div>
+</div>
