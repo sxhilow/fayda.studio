@@ -128,10 +128,6 @@ body {
   .case-study-body hr {
     @apply text-neutral-12 my-8;
   }
-
-  .case-study-body img {
-    @apply border border-neutral-12 rounded-2xl my-8;
-  }
 }
 
 @utility text-display-lg {
