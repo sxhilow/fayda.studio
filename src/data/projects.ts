@@ -1,7 +1,7 @@
-import Do4You from "@images/projects/do4you.webp"
-import EduPath from "@images/projects/edupath.webp"
-import ApexSolar from "@images/projects/apexsolar.webp"
-import GentleDentalCare from "@images/projects/gentle-dental-care.png"
+import Do4You from "@images/case-study/do4you/do4you.webp"
+import EduPath from "@images/case-study/concepts/edupath.webp"
+import ApexSolar from "@images/case-study/concepts/apexsolar.webp"
+import GentleDentalCare from "@images/case-study/gentle-dental-care/gentle-dental-care.png"
 import { getCollection, type CollectionEntry } from "astro:content";
 
 export type ProjectTag = "Branding" | "Design" | "Development" | "Launch";
