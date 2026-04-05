@@ -5,6 +5,8 @@ import { type CollectionEntry } from "astro:content";
 import Bookmark from "@icons/Bookmark.svg";
 import { Image } from "astro:assets";
 import { render } from "astro:content";
+import UpRight from "@icons/UpRight.svg";
+import Button from "@ui/Button.astro";
 
 interface Props {
     caseStudy: CollectionEntry<"case-studies">;
@@ -22,7 +24,7 @@ const {
     duration,
 } = caseStudy.data;
 
-const { Content } = await render(caseStudy)
+const { Content } = await render(caseStudy);
 ---
 
 <Section>
@@ -57,7 +59,9 @@ const { Content } = await render(caseStudy)
                 <span class="text-body-lg text-brand-surface">{duration}</span>
             </div>
         </div>
-        <div class="p-4 lg:p-8 bg-neutral-12/10 border border-neutral-12 rounded-4xl">
+        <div
+            class="p-4 lg:p-8 bg-neutral-12/10 border border-neutral-12 rounded-4xl"
+        >
             <div
                 class="group relative aspect-3/2 w-full overflow-hidden rounded-2xl border border-neutral-12"
             >
@@ -71,9 +75,28 @@ const { Content } = await render(caseStudy)
         </div>
 
         <div class="case-study-body">
-            <Content/>
+            <Content />
+        </div>
+
+        <div class="flex max-md:flex-col items-center gap-4 justify-between mt-4 md:mt-10 lg:mt-20">
+            <div class="flex">
+                <h4 class="text-h2 text-brand-surface max-w-3xl">
+                    Ready to turn your website into a client magnet?
+                    <span class="text-brand-blue text-h2"
+                        >Let’s map it out.
+                    </span>
+                </h4>
+            </div>
+            <div>
+                <Button
+                    label="Book a free strategy call"
+                    href="/contact"
+                    variant="filled"
+                    class="lg:animate-bounce w-full hover:[animation-play-state:paused] ease-in-out"
+                >
+                    <UpRight />
+                </Button>
+            </div>
         </div>
     </div>
-
-
 </Section>
