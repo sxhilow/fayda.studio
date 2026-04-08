@@ -1,4 +1,4 @@
-import Do4You from "@images/case-study/do4you/do4you.webp"
+import Do4You from "@images/case-study/do4you/do4you.png"
 import EduPath from "@images/case-study/concepts/edupath.webp"
 import ApexSolar from "@images/case-study/concepts/apexsolar.webp"
 import GentleDentalCare from "@images/case-study/gentle-dental-care/gentle-dental-care.png"
@@ -44,11 +44,11 @@ const projects: ProjectProps[] = [
     },
     {
         title: "do4you — Visa Form-Filling Service",
-        url: "do4you.co.za",
+        caseStudySlug: "do4you",
         image: Do4You,
         tags: ["Branding", "Design", "Development", "Launch"],
         alt: "do4you.co.za",
-        isDraft: true
+        isDraft: false
     },
     {
         title: "Apex Solar —  Solar Energy Solutions",
