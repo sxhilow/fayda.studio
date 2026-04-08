@@ -15,17 +15,14 @@ import { Image } from "astro:assets";
 
 import colors from "@images/case-study/gentle-dental-care/branding/colors.png"
 import typography from "@images/case-study/gentle-dental-care/branding/typography.png"
-import logo1 from "@images/case-study/gentle-dental-care/branding/logo1.png"
-import logo2 from "@images/case-study/gentle-dental-care/branding/logo2.png"
+import logos from "@images/case-study/gentle-dental-care/branding/logos.png"
 
 import transformation from "@images/case-study/gentle-dental-care/design/transformation.png"
-import about from "@images/case-study/gentle-dental-care/design/about.png"
+import transformationMobile from "@images/case-study/gentle-dental-care/design/transformation-mobile.png"
 import serviceMobile from "@images/case-study/gentle-dental-care/design/service-mobile.png"
 import service from "@images/case-study/gentle-dental-care/design/service.png"
 
 import performance from "@images/case-study/gentle-dental-care/testing/performance.png"
-import seo from "@images/case-study/gentle-dental-care/testing/seo.png"
-import bestPractice from "@images/case-study/gentle-dental-care/testing/best-practice.png"
 
 
 # Summary
@@ -42,68 +39,29 @@ Gentle Dental Care is a Durban-based practice defined by a radical commitment to
 
 
 <CaseStudyVisual >
-    <Split layout="left">
-        <div slot="main">
-            <Image src={colors} alt="brand colors" class="block w-full h-auto object-contain"/>
-        </div>
-
-        <div slot="extra">
-            <Stack >
-                <Image src={logo1} alt="Brand Logo" class="w-full h-auto block"/>
-                <Image src={typography} alt="Brand Typography" class="w-full h-auto block"/>
-                <Image src={logo2} alt="Brand Logo" class="w-full h-auto block"/>
-            </Stack>
-        </div>
-    </Split>
+    <Image src={colors} class="rounded-2xl" alt="colors" slot={"full-top"} />
+    <Image src={typography} class="rounded-2xl flex-1 min-w-0" alt="fonts" slot={"grid"} />
+    <Image src={logos} class="rounded-2xl flex-1 min-w-0" alt="logos" slot={"grid"} />
 </CaseStudyVisual>
 
 
 ## Branding
 The branding direction was designed to immediately shift perception from “standard dental clinic” to “premium, anxiety-free care experience.” We moved away from cold clinical blues and built a warm, high-contrast identity using deep blacks and refined gold accents to communicate calm authority. Typography was intentionally paired: a structured display face for presence, combined with a highly readable sans-serif for clarity—balancing elegance with accessibility across all patient touchpoints.
 
-<CaseStudyVisual  >
-    <Split layout="bottom">
-        <div slot="main">
-            <Image src={service} alt="brand colors" class="block w-full h-auto object-contain"/>
-        </div>
-
-        <div slot="extra">
-            <Stack isHorizontal>
-                <div class="overflow-hidden rounded-xl flex-1/4">
-                    <Image src={transformation} alt="transformation" class="w-full h-100 object-cover block"/>
-                </div>
-                <div class="overflow-hidden rounded-xl flex-2/4">
-                    <Image src={about} alt="about" class="w-full h-100 object-cover block"/>
-                </div>
-                <div class="overflow-hidden rounded-xl flex-1/4">
-                    <Image src={serviceMobile} alt="service mobile" class="w-full h-100 object-cover block"/>
-                </div>
-            </Stack>
-        </div>
-    </Split>
+<CaseStudyVisual >
+    <Image src={service} class="rounded-2xl" alt="colors" slot={"full-top"} />
+    <Image src={serviceMobile} class="rounded-2xl flex-1 min-w-0" alt="fonts" slot={"grid"} />
+    <Image src={transformationMobile} class="rounded-2xl flex-1 min-w-0" alt="logos" slot={"grid"} />
+    <Image src={transformation} class="rounded-2xl" alt="colors" slot={"full-bottom"} />
 </CaseStudyVisual>
+
 
 ## Design & Development
 The design phase focused on removing friction from the patient decision process. Every layout was structured to guide attention — from reassurance, to proof, to action — without overwhelming the user with choice. We translated the brand into a responsive interface system that feels calm, intentional, and effortless across all devices.
 
 
-<CaseStudyVisual>
-    <Split layout="top">
-        <div slot="main">
-            <Image src={performance} alt="brand colors" class="block w-full h-auto object-contain"/>
-        </div>
-
-        <div slot="extra">
-            <Stack isHorizontal>
-                <div class="overflow-hidden rounded-xl flex-2/3">
-                    <Image src={seo} alt="transformation" class="w-full h-100 object-cover block"/>
-                </div>
-                <div class="overflow-hidden rounded-xl flex-1/3">
-                    <Image src={bestPractice} alt="about" class="w-full h-100 object-cover block"/>
-                </div>
-            </Stack>
-        </div>
-    </Split>
+<CaseStudyVisual >
+    <Image src={performance} class="rounded-2xl" alt="colors" slot={"full-top"} />
 </CaseStudyVisual>
 
 
