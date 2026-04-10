@@ -92,55 +92,57 @@ const currentPath = Astro.url.pathname;
 </header>
 
 <script>
-    const menuBtn = document.getElementById("menu-btn");
-    const mobileMenu = document.getElementById("mobile-menu");
-    const menuIcon = document.getElementById("menu-icon");
-    const closeIcon = document.getElementById("close-icon");
+    document.addEventListener("astro:page-load", () => {
+        const menuBtn = document.getElementById("menu-btn");
+        const mobileMenu = document.getElementById("mobile-menu");
+        const menuIcon = document.getElementById("menu-icon");
+        const closeIcon = document.getElementById("close-icon");
 
-    function toggleMobileMenu(show: boolean) {
-        if (show) {
-            // OPEN
-            mobileMenu?.classList.remove("hidden");
+        function toggleMobileMenu(show: boolean) {
+            if (show) {
+                // OPEN
+                mobileMenu?.classList.remove("hidden");
 
-            mobileMenu?.getBoundingClientRect();
+                mobileMenu?.getBoundingClientRect();
 
-            mobileMenu?.classList.remove("translate-y-full");
-            mobileMenu?.classList.add("translate-y-0");
+                mobileMenu?.classList.remove("translate-y-full");
+                mobileMenu?.classList.add("translate-y-0");
 
-            menuIcon?.classList.add("hidden");
-            closeIcon?.classList.remove("hidden");
+                menuIcon?.classList.add("hidden");
+                closeIcon?.classList.remove("hidden");
 
-            document.body.classList.add("overflow-hidden");
-        } else {
-            // CLOSE
-            mobileMenu?.classList.remove("translate-y-0");
-            mobileMenu?.classList.add("translate-y-full");
+                document.body.classList.add("overflow-hidden");
+            } else {
+                // CLOSE
+                mobileMenu?.classList.remove("translate-y-0");
+                mobileMenu?.classList.add("translate-y-full");
 
-            // waiting for the animation to complete
-            setTimeout(() => {
-                mobileMenu?.classList.add("hidden");
-            }, 300);
+                // waiting for the animation to complete
+                setTimeout(() => {
+                    mobileMenu?.classList.add("hidden");
+                }, 300);
 
-            menuIcon?.classList.remove("hidden");
-            closeIcon?.classList.add("hidden");
+                menuIcon?.classList.remove("hidden");
+                closeIcon?.classList.add("hidden");
 
-            document.body.classList.remove("overflow-hidden");
+                document.body.classList.remove("overflow-hidden");
+            }
         }
-    }
 
-    menuBtn?.addEventListener("click", () => {
-        const isHidden = mobileMenu?.classList.contains("hidden");
+        menuBtn?.addEventListener("click", () => {
+            const isHidden = mobileMenu?.classList.contains("hidden");
 
-        if (isHidden) {
-            toggleMobileMenu(isHidden);
-        } else {
-            toggleMobileMenu(false);
-        }
-    });
+            if (isHidden) {
+                toggleMobileMenu(isHidden);
+            } else {
+                toggleMobileMenu(false);
+            }
+        });
 
-    document.querySelectorAll("#mobile-menu a").forEach((link) => {
-        link.addEventListener("click", () => {
-            toggleMobileMenu(false);
+        document.querySelectorAll("#mobile-menu a").forEach((link) => {
+            link.addEventListener("click", () => {
+                toggleMobileMenu(false);
+            });
         });
     });
 </script>

@@ -5,7 +5,7 @@ import Flash from "@icons/Flash.svg";
 import PlanCard from "@ui/PlanCard.astro";
 import { plansData } from "@data/plans";
 import CTA from "@ui/CTA.astro";
-import UpRight from "@icons/UpRight.svg"
+import UpRight from "@icons/UpRight.svg";
 ---
 
 <Section>
@@ -73,19 +73,21 @@ import UpRight from "@icons/UpRight.svg"
 </Section>
 
 <script>
-    const buttons = document.querySelectorAll(".tab-btn");
-    const groups = document.querySelectorAll(".plan-group");
+    document.addEventListener("astro:page-load", () => {
+        const buttons = document.querySelectorAll(".tab-btn");
+        const groups = document.querySelectorAll(".plan-group");
 
-    buttons.forEach((btn) => {
-        btn.addEventListener("click", () => {
-            const target = btn.getAttribute("data-target");
+        buttons.forEach((btn) => {
+            btn.addEventListener("click", () => {
+                const target = btn.getAttribute("data-target");
 
-            groups.forEach((group) => {
-                group.classList.toggle("hidden", group.id !== target);
-            });
+                groups.forEach((group) => {
+                    group.classList.toggle("hidden", group.id !== target);
+                });
 
-            buttons.forEach((b) => {
-                b.setAttribute("data-active", b === btn ? "true" : "false");
+                buttons.forEach((b) => {
+                    b.setAttribute("data-active", b === btn ? "true" : "false");
+                });
             });
         });
     });

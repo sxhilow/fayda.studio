@@ -70,34 +70,36 @@ import Heading from "@ui/Heading.astro";
 </section>
 
 <script>
-    const observerOptions = {
-        root: null,
-        rootMargin: "-50% 0px -50% 0px",
-        threshold: 0,
-    };
+    document.addEventListener("astro:page-load", () => {
+        const observerOptions = {
+            root: null,
+            rootMargin: "-50% 0px -50% 0px",
+            threshold: 0,
+        };
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-            const index = entry.target.getAttribute("data-step");
-            const dot = document.querySelector(`[data-dot="${index}"]`);
-            const innerDot = dot?.querySelector(".dot-inner");
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                const index = entry.target.getAttribute("data-step");
+                const dot = document.querySelector(`[data-dot="${index}"]`);
+                const innerDot = dot?.querySelector(".dot-inner");
 
-            if (entry.isIntersecting) {
-                // ACTIVATE: Card is in the middle
-                dot?.classList.add("border-brand-neutral", "scale-110");
-                innerDot?.classList.remove("bg-white/50", "scale-110");
-                innerDot?.classList.add("bg-brand-neutral", "scale-125");
-            } else {
-                // DEACTIVATE: Card has moved away
-                dot?.classList.remove("border-brand-neutral", "scale-110");
-                innerDot?.classList.remove("bg-brand-neutral", "scale-125");
-                innerDot?.classList.add("bg-white/50", "scale-110");
-            }
-        });
-    }, observerOptions);
+                if (entry.isIntersecting) {
+                    // ACTIVATE: Card is in the middle
+                    dot?.classList.add("border-brand-neutral", "scale-110");
+                    innerDot?.classList.remove("bg-white/50", "scale-110");
+                    innerDot?.classList.add("bg-brand-neutral", "scale-125");
+                } else {
+                    // DEACTIVATE: Card has moved away
+                    dot?.classList.remove("border-brand-neutral", "scale-110");
+                    innerDot?.classList.remove("bg-brand-neutral", "scale-125");
+                    innerDot?.classList.add("bg-white/50", "scale-110");
+                }
+            });
+        }, observerOptions);
 
-    // Start watching all rows
-    document
-        .querySelectorAll(".process-row")
-        .forEach((row) => observer.observe(row));
+        // Start watching all rows
+        document
+            .querySelectorAll(".process-row")
+            .forEach((row) => observer.observe(row));
+    });
 </script>
