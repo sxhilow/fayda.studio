@@ -40,9 +40,9 @@ export const footerItems: FooterItemsProps[] = [
     label: "Links",
     items: [
       { text: "Home", href: "/" },
+      { text: "Our Work", href: "/case-studies" },
       { text: "Services", href: "/services" },
       { text: "Plans", href: "/plans" },
-      { text: "Our Work", href: "/#work" },
       { text: "FAQs", href: "/plans#faqs" },
       { text: "Contact", href: "/contact" },
       { text: "Why us", href: "/#whyus" },
