@@ -76,9 +76,10 @@ const {
 			requestAnimationFrame(raf);
 
 			let lastScrollY = window.scrollY;
-			const navbar = document.getElementById("navbar");
+			let navbar: HTMLElement | null = null;
 
-			lenis.on("scroll", ({ scroll }) => {
+			function OnScroll({ scroll }: { scroll: number }) {
+				if (!navbar) return;
 				if (navbar) {
 					if (scroll > lastScrollY && scroll > 80) {
 						navbar.style.transform = "translateY(-100%)";
@@ -87,6 +88,13 @@ const {
 					}
 				}
 				lastScrollY = scroll;
+			}
+
+			document.addEventListener("astro:page-load", () => {
+				navbar = document.getElementById("navbar");
+				lastScrollY = window.scrollY;
+				lenis.off("scroll", OnScroll);
+				lenis.on("scroll", OnScroll);
 			});
 
 			document.addEventListener("astro:after-swap", () => {
