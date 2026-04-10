@@ -1,7 +1,7 @@
-import Do4You from "@images/case-study/do4you/do4you.png"
+import Do4You from "@images/case-study/do4you/do4you.webp"
 import EduPath from "@images/case-study/concepts/edupath.webp"
 import ApexSolar from "@images/case-study/concepts/apexsolar.webp"
-import GentleDentalCare from "@images/case-study/gentle-dental-care/gentle-dental-care.png"
+import GentleDentalCare from "@images/case-study/gentle-dental-care/gentle-dental-care.webp"
 import { getCollection, type CollectionEntry } from "astro:content";
 
 export type ProjectTag = "Branding" | "Design" | "Development" | "Launch";
@@ -19,8 +19,8 @@ type ProjectProps = {
 
 export type EnrichedProjects = ProjectProps & { url: string }
 
-export const getEnrichedProjects = async () : Promise<EnrichedProjects[]> => {
-    const caseStudies: CollectionEntry<"case-studies">[] = await getCollection("case-studies");   
+export const getEnrichedProjects = async (): Promise<EnrichedProjects[]> => {
+    const caseStudies: CollectionEntry<"case-studies">[] = await getCollection("case-studies");
 
     return projects.map((project) => {
         const caseStudy = project.caseStudySlug ? caseStudies.find((cs) => cs.id === project.caseStudySlug) : null;
