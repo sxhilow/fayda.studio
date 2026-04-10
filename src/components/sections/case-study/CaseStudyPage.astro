@@ -3,10 +3,10 @@ import PageHeader from "@ui/PageHeader.astro";
 import Section from "@ui/Section.astro";
 import { type CollectionEntry } from "astro:content";
 import Bookmark from "@icons/Bookmark.svg";
-import { Image } from "astro:assets";
 import { render } from "astro:content";
 import UpRight from "@icons/UpRight.svg";
 import Button from "@ui/Button.astro";
+import ScrollableImage from "@ui/ScrollableImage.astro";
 
 interface Props {
     caseStudy: CollectionEntry<"case-studies">;
@@ -62,25 +62,20 @@ const { Content } = await render(caseStudy);
         <div
             class="p-4 lg:p-8 bg-neutral-12/10 border border-neutral-12 rounded-4xl"
         >
-            <div
-                class="group relative aspect-3/2 w-full overflow-hidden rounded-2xl border border-neutral-12"
-            >
-                <Image
-                    src={coverImage}
-                    alt={alt}
-                    width={1440}
-                    class="h-full w-full object-cover object-top transition-[object-position] duration-10000 ease-in-out group-hover:object-bottom"
-                />
-            </div>
+            <ScrollableImage image={coverImage} alt={alt} />
         </div>
 
         <div class="case-study-body">
             <Content />
         </div>
 
-        <div class="flex max-md:flex-col items-center gap-4 justify-between mt-4 md:mt-10 lg:mt-20">
+        <div
+            class="flex max-md:flex-col items-center gap-4 justify-between mt-4 md:mt-10 lg:mt-20"
+        >
             <div class="flex">
-                <h4 class="text-h2 text-brand-surface max-w-3xl max-md:text-center">
+                <h4
+                    class="text-h2 text-brand-surface max-w-3xl max-md:text-center"
+                >
                     Ready to turn your website into a client magnet?
                     <span class="text-brand-blue text-h2"
                         >Let’s map it out.

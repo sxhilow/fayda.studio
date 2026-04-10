@@ -1,6 +1,7 @@
 ---
 import type { ProjectTag } from "@data/projects";
 import { Image } from "astro:assets";
+import ScrollableImage from "./ScrollableImage.astro";
 
 interface Props {
   title: string;
@@ -19,15 +20,7 @@ const { title, image, url, tags = ["Design"], alt } = Astro.props;
   aria-label="See our designs"
 >
   <div class="overflow-hidden flex flex-col gap-4">
-    <div
-      class="group relative aspect-3/2 w-full overflow-hidden rounded-xl border border-neutral-12"
-    >
-      <Image
-        src={image}
-        alt={alt}
-        class="h-full w-full object-cover object-top transition-[object-position] duration-6000 ease-in-out group-hover:object-bottom"
-      />
-    </div>
+    <ScrollableImage image={image} alt={alt}/>
 
     <div class="">
       <h3
