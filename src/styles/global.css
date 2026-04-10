@@ -114,7 +114,7 @@ body {
   }
 
   .case-study-body h2 {
-    @apply text-body-lg font-bold text-brand-surface my-2;
+    @apply text-body-lg font-bold text-brand-surface mb-1 mt-8;
   }
 
   .case-study-body p {
