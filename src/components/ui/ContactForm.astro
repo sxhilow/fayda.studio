@@ -1,0 +1,74 @@
+---
+import Button from "./Button.astro";
+---
+
+<form
+    id="contact-form"
+    action="https://api.web3forms.com/submit"
+    method="POST"
+    class="w-full max-w-xl mx-auto flex flex-col gap-8 border border-neutral-12 rounded-2xl p-8"
+>
+    <input
+        type="hidden"
+        name="access_key"
+        value="d6851e92-d72a-49c0-bbc0-1af6d9899161"
+    />
+
+    <div class="flex flex-col gap-1">
+        <label for="name" class="text-neutral-7">Name</label>
+        <input
+            type="text"
+            name="name"
+            required
+            class="bg-neutral-12/10 border border-neutral-12 rounded-lg py-3 px-5 focus:outline-none focus:ring focus:ring-brand-blue/20 transition-all duration-300 placeholder:text-neutral-9 text-brand-surface"
+            placeholder="Enter full name"
+        />
+    </div>
+
+    <div class="flex flex-col gap-1">
+        <label for="email" class="text-neutral-7">Email</label>
+        <input
+            type="email"
+            name="email"
+            required
+            class="bg-neutral-12/10 border border-neutral-12 rounded-lg py-3 px-5 focus:outline-none focus:ring focus:ring-brand-blue/20 transition-all duration-300 placeholder:text-neutral-9 text-brand-surface"
+            placeholder="Enter email"
+        />
+    </div>
+
+    <div class="flex flex-col gap-1">
+        <label for="phone" class="text-neutral-7">Subject</label>
+        <select
+            name="subject"
+            class="bg-neutral-12/10 border border-neutral-12 rounded-lg py-3 px-5 focus:outline-none focus:ring focus:ring-brand-blue/20 transition-all duration-300 text-neutral-9"
+            onchange="this.classList.remove('text-neutral-9'); this.classList.add('text-brand-surface')"
+        >
+            <option value="" disabled selected>Select a service...</option>
+            <option value="website-revamp">Website Revamp</option>
+            <option value="branding-identity">Branding & Identity</option>
+            <option value="website-design">Website Design</option>
+            <option value="ecommerce-mvp">E-commerce & MVP</option>
+            <option value="seo-optimization">SEO Optimization</option>
+            <option value="maintenance-support">Maintenance & Support</option>
+            <option value="other">Other</option>
+        </select>
+    </div>
+
+    <div class="flex flex-col gap-1">
+        <label for="message" class="text-neutral-7">Message (optional)</label>
+        <textarea
+            name="message"
+            class="bg-neutral-12/10 border border-neutral-12 rounded-lg py-3 px-5 focus:outline-none focus:ring focus:ring-brand-blue/20 transition-all duration-300 placeholder:text-neutral-9 text-brand-surface"
+            placeholder="Enter your message here..."
+            rows="3"></textarea>
+    </div>
+
+    <Button type="submit" label="Submit enquiry" variant="filled" />
+</form>
+
+<script>
+    document.addEventListener("astro:page-load", () => {
+        const form = document.getElementById("contact-form") as HTMLFormElement;
+        form.reset();
+    });
+</script>
