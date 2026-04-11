@@ -10,7 +10,7 @@ const projects = await getEnrichedProjects();
 const filteredProjects = projects.filter(project => !project.isConcept && !project.isDraft)
 ---
 
-<Section>
+<Section variant="page">
     <PageHeader
         pillLabel="Digital Craftsmanship"
         pillIcon={Laptop}
