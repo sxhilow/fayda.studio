@@ -1,17 +1,19 @@
 ---
-import type { HTMLAttributes } from 'astro/types';
+import type { HTMLAttributes } from "astro/types";
 
 export type ButtonVariants = "ghost" | "outline" | "filled" | "rounded";
 
-interface Props extends HTMLAttributes<'a'>{
+interface Props extends HTMLAttributes<"a"> {
     label: string;
     iconPosition?: "right" | "left";
     underlineAnimation?: boolean;
-    variant?: ButtonVariants
+    variant?: ButtonVariants;
+    type?: "button" | "submit" | "reset";
 }
 
 const {
     href,
+    type,
     label,
     iconPosition = "right",
     underlineAnimation = false,
@@ -20,35 +22,43 @@ const {
     ...rest // Capture all other attributes (id, target, etc.)
 } = Astro.props;
 
-const baseStyles = "inline-flex items-center justify-center  transition duration-150  group aria-[current=page]:text-brand-surface"
+const baseStyles =
+    "inline-flex items-center justify-center  transition-all duration-300 cursor-pointer  group aria-[current=page]:text-brand-surface";
 
 const variants = {
-    "ghost": "font-regular text-neutral-7 hover:text-brand-surface",
-    "outline": "text-body-md border border-brand-blue text-brand-surface bg-brand-blue/5 hover:bg-brand-neutral px-4 py-3 gap-2 rounded-lg",
-    "filled": "bg-brand-blue font-semibold text-brand-surface hover:bg-blue-900 px-4 py-3 gap-2 rounded-lg",
-    "rounded": "bg-brand-blue font-semibold text-brand-surface hover:bg-blue-900 px-4 py-4 rounded-full"
-}
+    ghost: "font-regular text-neutral-7 hover:text-brand-surface",
+    outline:
+        "text-body-md border border-brand-blue text-brand-surface bg-brand-blue/5 hover:bg-brand-neutral px-4 py-3 gap-2 rounded-lg",
+    filled: "bg-blue-900 text-brand-surface hover:bg-blue-800 px-4 py-3 gap-2 rounded-lg",
+    rounded:
+        "bg-brand-blue font-semibold text-brand-surface hover:bg-blue-900 px-4 py-4 rounded-full",
+};
 
-const activeStyles = [
-    className,
-    baseStyles,
-    variants[variant]
-].join(" ");
-
+const activeStyles = [className, baseStyles, variants[variant]].join(" ");
 ---
 
-<a href={href} class={activeStyles} {...rest}>
-
-    {iconPosition === "left" && <slot name="icon"/>}
-
-    <span>
-        {label}
-        {
-            underlineAnimation && <span class="block max-w-0 group-hover:max-w-full transition-all duration-300 h-0.5 bg-primary-orange"></span>
-        }
-    </span>
-
-    {iconPosition === "right" && <slot name="icon"/>}
-
-
-</a>
+{
+    type ? (
+        <button type={type} class={activeStyles} {...rest}>
+            {iconPosition === "left" && <slot name="icon" />}
+            <span>
+                {label}
+                {underlineAnimation && (
+                    <span class="block max-w-0 group-hover:max-w-full transition-all duration-300 h-0.5 bg-primary-orange" />
+                )}
+            </span>
+            {iconPosition === "right" && <slot name="icon" />}
+        </button>
+    ) : (
+        <a href={href} class={activeStyles} {...rest}>
+            {iconPosition === "left" && <slot name="icon" />}
+            <span>
+                {label}
+                {underlineAnimation && (
+                    <span class="block max-w-0 group-hover:max-w-full transition-all duration-300 h-0.5 bg-primary-orange" />
+                )}
+            </span>
+            {iconPosition === "right" && <slot name="icon" />}
+        </a>
+    )
+}
