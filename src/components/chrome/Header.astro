@@ -11,14 +11,16 @@ const currentPath = Astro.url.pathname;
 ---
 
 <header class="max-w-7xl mx-auto py-8 flex justify-between items-center px-5">
-    <div class="w-full flex justify-between items-center ">
+    <div class="w-full flex justify-between items-center">
         <div class="flex-1">
             <a href="/">
                 <Logo />
             </a>
         </div>
 
-        <nav class="flex-1 flex justify-center items-center gap-8 max-lg:hidden">
+        <nav
+            class="flex-1 flex justify-center items-center gap-8 max-lg:hidden"
+        >
             {
                 navItems.map((item) => (
                     <Button
@@ -42,8 +44,11 @@ const currentPath = Astro.url.pathname;
         </nav>
 
         <div class="flex-1 flex justify-end max-lg:hidden">
-            <Button href="/contact" label="Book a Call" variant="outline" >
-                <UpRight slot={"icon"} class="group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform duration-300 ease-out" />
+            <Button href="/book-a-call" label="Book a Call" variant="outline">
+                <UpRight
+                    slot={"icon"}
+                    class="group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform duration-300 ease-out"
+                />
             </Button>
         </div>
     </div>

@@ -1,7 +1,7 @@
 ---
 import Layout from "@layouts/Layout.astro";
+import BookCall from "@sections/BookCall.astro";
 import CaseStudyPage from "@sections/case-study/CaseStudyPage.astro";
-import Contact from "@sections/Contact.astro";
 import type { GetStaticPaths } from "astro";
 import { getCollection, type CollectionEntry } from "astro:content";
 
@@ -21,5 +21,5 @@ const { caseStudy } = Astro.props;
 <Layout>
     <CaseStudyPage caseStudy={caseStudy} />
 
-    <Contact/>
+    <BookCall/>
 </Layout>

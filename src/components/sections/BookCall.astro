@@ -1,0 +1,39 @@
+---
+import Booking from "@ui/Booking.astro";
+import Section from "@ui/Section.astro";
+import PageHeader from "@ui/PageHeader.astro";
+import AddUser from "@icons/AddUser.svg";
+
+interface Props {
+    variant?: "page" | "footer";
+}
+
+const { variant = "footer" } = Astro.props;
+---
+
+<Section variant="page">
+    {
+        variant === "page" ? (
+            <PageHeader
+                pillLabel="Book a Free Call"
+                pillIcon={AddUser}
+                description="Pick a time that works for you — we'll spend 30 minutes understanding your project and figuring out if we're a good fit."
+            >
+                <Fragment slot={"title"}>
+                    Let's Talk About Your <span class="text-brand-red">Project</span>
+                </Fragment>
+            </PageHeader>
+        ) : (
+            <div class="pt-20">
+                <h1 class="text-h2 text-brand-surface text-center max-w-xl mx-auto">
+                    Have a Project in mind?{" "}
+                    <span class="text-neutral-7">Let's talk</span>
+                </h1>
+            </div>
+        )
+    }
+
+    <div class="max-w-7xl mx-auto rounded my-8">
+        <Booking />
+    </div>
+</Section>
