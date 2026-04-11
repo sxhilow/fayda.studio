@@ -2,18 +2,16 @@
 import Booking from "@ui/Booking.astro";
 import Section from "@ui/Section.astro";
 import PageHeader from "@ui/PageHeader.astro";
-import AddUser from "@icons/AddUser.svg"
+import AddUser from "@icons/AddUser.svg";
 
 interface Props {
-    variant?: "page" | "footer" 
+    variant?: "page" | "footer";
 }
 
-const {
-    variant = "footer"
-} = Astro.props
+const { variant = "footer" } = Astro.props;
 ---
 
-<Section class="pt-20">
+<Section variant="page">
     {
         variant === "page" ? (
             <PageHeader
@@ -22,13 +20,17 @@ const {
                 description="Have a project in mind? Book a call directly into my calendar."
             >
                 <Fragment slot={"title"}>
-                    Let’s Build Something <span class="text-brand-red">Great</span>
+                    Let’s Build Something{" "}
+                    <span class="text-brand-red">Great</span>
                 </Fragment>
             </PageHeader>
         ) : (
-            <h1 class="text-h2 text-brand-surface text-center max-w-xl mx-auto">
-                Have a Project in mind? <span class="text-neutral-7">Let's talk</span>
-            </h1>
+            <div class="pt-20">
+                <h1 class="text-h2 text-brand-surface text-center max-w-xl mx-auto">
+                    Have a Project in mind?{" "}
+                    <span class="text-neutral-7">Let's talk</span>
+                </h1>
+            </div>
         )
     }
 
@@ -36,4 +38,3 @@ const {
         <Booking />
     </div>
 </Section>
-

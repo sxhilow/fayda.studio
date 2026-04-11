@@ -1,15 +1,22 @@
 ---
 interface Props{
-    id?: string,
-    class?: string
+    id?: string;
+    class?: string;
+    variant?: "default" | "page";
 }
 
 const {
     id,
-    class: className
+    class: className,
+    variant = "default"
 } = Astro.props;
+
+const variants = {
+    "default": "py-20",
+    "page": "pb-20 pt-0"
+}
 ---
 
-<section id={id} class:list={[className, "max-w-7xl mx-auto pb-20 space-y-8 lg:space-y-16 px-5" ]}>
+<section id={id} class:list={[className, "max-w-7xl mx-auto space-y-8 lg:space-y-16 px-5", variants[variant] ]}>
     <slot/>
 </section>
