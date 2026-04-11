@@ -62,7 +62,7 @@ import Whatsapp from "@icons/Whatsapp.svg"
             ))
         }
 
-        <div class="bg-brand-neutral rounded-lg p-8 flex flex-col gap-4">
+        <div class="bg-brand-neutral border border-neutral-12 rounded-2xl p-8 flex flex-col gap-4">
             <div >
                 <Image
                     src={founder}
@@ -75,10 +75,10 @@ import Whatsapp from "@icons/Whatsapp.svg"
             </p>
 
             <Button
-                href={whatsappData.link},
+                href={whatsappData.link}
                 label="Chat to me"
                 iconPosition="left"
-                class="bg-neutral-12 gap-4 hover:bg-neutral-12/10"
+                class="bg-neutral-12 gap-4 hover:bg-neutral-12/10 border border-neutral-12"
             >   
                 <Whatsapp slot={"icon"}/>
             </Button>

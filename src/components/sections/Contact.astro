@@ -1,40 +1,79 @@
 ---
-import Booking from "@ui/Booking.astro";
+import { Image } from "astro:assets";
+import founder from "@images/founder.avif";
+import Whatsapp from "@icons/Whatsapp.svg";
+import Mail from "@icons/Mail.svg";
 import Section from "@ui/Section.astro";
 import PageHeader from "@ui/PageHeader.astro";
 import AddUser from "@icons/AddUser.svg";
-
-interface Props {
-    variant?: "page" | "footer";
-}
-
-const { variant = "footer" } = Astro.props;
+import ContactForm from "@ui/ContactForm.astro";
+import ProjectBadge from "@icons/ProjectBadge.svg";
+import Button from "@ui/Button.astro";
+import { whatsappData } from "@data/whatsapp";
 ---
 
 <Section variant="page">
-    {
-        variant === "page" ? (
-            <PageHeader
-                pillLabel="Get in Touch"
-                pillIcon={AddUser}
-                description="Have a project in mind? Book a call directly into my calendar."
-            >
-                <Fragment slot={"title"}>
-                    Let’s Build Something{" "}
-                    <span class="text-brand-red">Great</span>
-                </Fragment>
-            </PageHeader>
-        ) : (
-            <div class="pt-20">
-                <h1 class="text-h2 text-brand-surface text-center max-w-xl mx-auto">
-                    Have a Project in mind?{" "}
-                    <span class="text-neutral-7">Let's talk</span>
-                </h1>
-            </div>
-        )
-    }
+    <PageHeader
+        pillLabel="Get in Touch"
+        pillIcon={AddUser}
+        description="Fill in the form and we'll get back to you within 24 hours."
+    >
+        <Fragment slot={"title"}>
+            Send Us a <span class="text-brand-red">Message</span>
+        </Fragment>
+    </PageHeader>
 
-    <div class="max-w-7xl mx-auto rounded my-8">
-        <Booking />
+    <div class="flex max-md:flex-col-reverse justify-between gap-8">
+        <div class="flex-1">
+            <div class="max-w-lg max-md:mx-auto flex flex-col gap-8 h-full">
+                <div>
+                    <h2 class="text-h2 text-brand-surface">
+                        Your next <span class="text-neutral-7 font-bold"
+                            >big thing</span
+                        > starts here.
+                    </h2>
+                </div>
+                <div
+                    class="bg-neutral-12/10 border border-neutral-12 rounded-2xl p-8 flex flex-col gap-4"
+                >
+                    <div>
+                        <Image
+                            src={founder}
+                            alt={"ME"}
+                            class="w-25 rounded-lg"
+                        />
+                    </div>
+                    <p class="text-brand-surface font-regular text-body-md">
+                        Hi, I’m Sahil Jada, the founder. If you have questions
+                        or just want to talk about your idea, I’m only a message
+                        away.
+                    </p>
+
+                    <Button
+                        href={whatsappData.link}
+                        label="Chat to me"
+                        iconPosition="left"
+                        class="bg-brand-neutral border border-neutral-12 gap-4 hover:bg-neutral-12/20"
+                    >
+                        <Whatsapp slot={"icon"} />
+                    </Button>
+                    <Button
+                        href="mailto:sahil@fayda.studio"
+                        label="Email me"
+                        iconPosition="left"
+                        class="bg-brand-neutral border border-neutral-12 gap-4 hover:bg-neutral-12/20"
+                    />
+                </div>
+            </div>
+        </div>
+
+        <div class="flex-1 relative md:pt-8 md:pl-8">
+            <div class="absolute left-0 top-0 group max-md:hidden">
+                <ProjectBadge
+                    class="w-16 h-16 rotate-45 group-hover:scale-105 transition-all duration-300"
+                />
+            </div>
+            <ContactForm />
+        </div>
     </div>
 </Section>
