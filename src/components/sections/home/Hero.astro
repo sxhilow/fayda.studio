@@ -39,13 +39,18 @@ import ProjectBadge from "@icons/ProjectBadge.svg";
                 <Button
                     href="/services"
                     label="Explore Our Services"
-                    class=""
+                    class="hero-cta-btn"
+                    data-label="Explore Our Services"
+                    data-destination="/services"
                 />
                 <Button
                     href="/case-studies"
                     label="View Case Studies"
                     iconPosition="left"
                     variant="outline"
+                    class="hero-cta-btn"
+                    data-label="View Case Studies"
+                    data-destination="/case-studies"
                 />
             </div>
 
@@ -133,6 +138,19 @@ import ProjectBadge from "@icons/ProjectBadge.svg";
         </div>
     </div>
 </section>
+
+<script>
+    document.addEventListener("astro:page-load", () => {
+        document.querySelectorAll(".hero-cta-btn").forEach((btn) => {
+            btn.addEventListener("click", () => {
+                window.posthog?.capture("hero_cta_clicked", {
+                    label: (btn as HTMLElement).dataset.label,
+                    destination: (btn as HTMLElement).dataset.destination,
+                });
+            });
+        });
+    });
+</script>
 
 <script is:inline>
     const words = ["Websites", "Products", "Platforms", "Brands"];

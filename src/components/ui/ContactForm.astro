@@ -70,5 +70,23 @@ import Button from "./Button.astro";
     document.addEventListener("astro:page-load", () => {
         const form = document.getElementById("contact-form") as HTMLFormElement;
         form.reset();
+
+        const subjectSelect = form.querySelector('select[name="subject"]') as HTMLSelectElement;
+        subjectSelect?.addEventListener("change", () => {
+            window.posthog?.capture("contact_form_service_selected", {
+                service: subjectSelect.value,
+            });
+        });
+
+        form.addEventListener("submit", () => {
+            const emailInput = form.querySelector('input[name="email"]') as HTMLInputElement;
+            const subject = subjectSelect?.value || "";
+            if (emailInput?.value) {
+                window.posthog?.identify(emailInput.value);
+            }
+            window.posthog?.capture("contact_form_submitted", {
+                service: subject,
+            });
+        });
     });
 </script>

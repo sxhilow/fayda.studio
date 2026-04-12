@@ -16,8 +16,10 @@ const { title, image, url, tags = ["Design"], alt } = Astro.props;
 
 <a
   href={url}
-  class="block group"
+  class="block group project-card-link"
   aria-label="See our designs"
+  data-title={title}
+  data-url={url}
 >
   <div class="overflow-hidden flex flex-col gap-4">
     <ScrollableImage image={image} alt={alt}/>
@@ -43,3 +45,16 @@ const { title, image, url, tags = ["Design"], alt } = Astro.props;
     </div>
   </div>
 </a>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    document.querySelectorAll(".project-card-link").forEach((link) => {
+      link.addEventListener("click", () => {
+        window.posthog?.capture("project_card_clicked", {
+          project_title: (link as HTMLElement).dataset.title,
+          destination_url: (link as HTMLElement).dataset.url,
+        });
+      });
+    });
+  });
+</script>
