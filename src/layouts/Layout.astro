@@ -8,6 +8,7 @@ import siteData from "@data/seo/siteData.json";
 import Header from "@chrome/Header.astro";
 import Footer from "@chrome/Footer.astro";
 import Seo from "@components/seo/Seo.astro";
+import PostHog from "@components/integration/posthog.astro";
 
 import Analytics from "@vercel/analytics/astro";
 
@@ -40,6 +41,7 @@ const {
 		<Seo {title} {description} url={Astro.url} {image} />
 
 		<ClientRouter />
+		<PostHog />
 	</head>
 	<body>
 		<div

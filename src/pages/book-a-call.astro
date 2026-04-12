@@ -8,3 +8,9 @@ import BookCall from "@sections/BookCall.astro";
     <BookCall variant="page"/>
 
 </Layout>
+
+<script>
+    document.addEventListener("astro:page-load", () => {
+        window.posthog?.capture("book_a_call_page_viewed");
+    });
+</script>

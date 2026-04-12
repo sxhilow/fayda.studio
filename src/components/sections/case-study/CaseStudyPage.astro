@@ -87,7 +87,8 @@ const { Content } = await render(caseStudy);
                     label="Book a free strategy call"
                     href="/contact"
                     variant="filled"
-                    class="lg:animate-bounce w-full hover:[animation-play-state:paused] ease-in-out"
+                    class="lg:animate-bounce w-full hover:[animation-play-state:paused] ease-in-out case-study-cta-btn"
+                    data-case-study-title={title}
                 >
                     <UpRight />
                 </Button>
@@ -95,3 +96,15 @@ const { Content } = await render(caseStudy);
         </div>
     </div>
 </Section>
+
+<script>
+    document.addEventListener("astro:page-load", () => {
+        document.querySelectorAll(".case-study-cta-btn").forEach((btn) => {
+            btn.addEventListener("click", () => {
+                window.posthog?.capture("case_study_cta_clicked", {
+                    case_study_title: (btn as HTMLElement).dataset.caseStudyTitle,
+                });
+            });
+        });
+    });
+</script>

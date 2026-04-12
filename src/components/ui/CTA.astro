@@ -34,9 +34,24 @@ const {
       label={buttonLabel}
       href={url}
       variant={buttonVariant}
-      class="lg:animate-bounce w-full hover:[animation-play-state:paused] ease-in-out"
+      class="lg:animate-bounce w-full hover:[animation-play-state:paused] ease-in-out cta-section-btn"
+      data-label={buttonLabel}
+      data-destination={url}
     >
       {ButtonIcon && <ButtonIcon  slot={'icon'}/>}
     </Button>
   </div>
 </div>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    document.querySelectorAll(".cta-section-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        window.posthog?.capture("cta_section_clicked", {
+          label: (btn as HTMLElement).dataset.label,
+          destination: (btn as HTMLElement).dataset.destination,
+        });
+      });
+    });
+  });
+</script>
