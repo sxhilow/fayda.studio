@@ -1,104 +1,111 @@
-export default function jsonLDGenerator({ 
-  title, 
-  description, 
-  url, 
-  image,
-  type = 'Organization',
-  services = [
-    "Website Revamp",
-    "Website Redesign",
-    "Website Design",
-    "UI/UX Design",
-    "Branding",
-    "Website Development",
-    "E-commerce Solutions",
-    "Web Application Development",
-    "SEO Optimization",
-    "Website Maintenance",
-    "Performance Optimization"
-  ], 
-  socialProfiles = []
-}) {
-  
+export default function jsonLDGenerator(siteData, overrides = {}) {
+  const {
+    title = siteData.title,
+    description = siteData.description,
+    url = siteData.url,
+    image = siteData.image,
+    type = "Organization",
+  } = overrides;
+
   const baseSchema = {
     "@context": "https://schema.org",
     "@type": type,
-    "name": title,
-    "description": description,
-    "url": url,
-    "logo": new URL(image.src, url).toString(),
-    "image": new URL(image.src, url).toString(),
-    "areaServed": "ZA",
-    "address": {
+    name: siteData.company.name,
+    legalName: siteData.company.legalName,
+    description,
+    url,
+    logo: new URL(siteData.logo.src, url).toString(),
+    image: new URL(image.src, url).toString(),
+    email: siteData.company.email,
+    telephone: siteData.company.phone,
+    foundingDate: siteData.company.foundingDate,
+    founder: {
+      "@type": "Person",
+      name: siteData.company.founder.name,
+      ...(siteData.company.founder.url
+        ? { url: siteData.company.founder.url }
+        : {}),
+      ...(siteData.company.founder.sameAs?.length
+        ? { sameAs: siteData.company.founder.sameAs }
+        : {}),
+    },
+    address: {
       "@type": "PostalAddress",
-      "addressCountry": "ZA",
-    }
+      ...(siteData.company.address.addressLocality
+        ? { addressLocality: siteData.company.address.addressLocality }
+        : {}),
+      ...(siteData.company.address.addressRegion
+        ? { addressRegion: siteData.company.address.addressRegion }
+        : {}),
+      ...(siteData.company.address.addressCountry
+        ? { addressCountry: siteData.company.address.addressCountry }
+        : {}),
+    },
+    areaServed: siteData.company.areaServed,
+    knowsAbout: siteData.company.knowsAbout,
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: siteData.company.phone,
+      email: siteData.company.email,
+      contactType: "customer service",
+      areaServed: siteData.company.areaServed,
+      availableLanguage: "English",
+    },
   };
 
-  if (services.length > 0 && type === 'Organization') {
+  if (type === "LocalBusiness") {
+    baseSchema.priceRange = "$$";
+  }
+
+  if (siteData.services?.length > 0) {
     baseSchema.hasOfferCatalog = {
       "@type": "OfferCatalog",
-      "name": "Web Development Services",
-      "itemListElement": services.map((service, index) => ({
+      name: "Web Development Services",
+      itemListElement: siteData.services.map((service, index) => ({
         "@type": "Offer",
-        "itemOffered": {
+        itemOffered: {
           "@type": "Service",
-          "name": service
+          name: service.name,
+          description: service.description,
         },
-        "position": index + 1
-      }))
+        position: index + 1,
+      })),
     };
   }
 
-
-  if (socialProfiles.length > 0) {
-    baseSchema.sameAs = socialProfiles;
-  }
-
-  // Add LocalBusiness properties if applicable
-  if (type === 'LocalBusiness') {
-    Object.assign(baseSchema, {
-      // "priceRange": "$$$",
-      "openingHours": "Mo-Fr 09:00-17:00",
-      "telephone": "+27721356764"
-    });
+  if (siteData.socialProfiles?.length > 0) {
+    baseSchema.sameAs = siteData.socialProfiles;
   }
 
   return baseSchema;
 }
 
-
-export function generateWebSiteSchema({ url, searchUrl, name }) {
+export function generateWebSiteSchema({ url, name }) {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "name": name,
-    "url": url,
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": `${searchUrl}?q={search_term_string}`,
-      "query-input": "required name=search_term_string"
-    }
+    name,
+    url,
   };
 }
 
-export function generateServiceSchema({ 
-  serviceName, 
-  description, 
-  url, 
+export function generateServiceSchema({
+  serviceName,
+  description,
+  url,
   priceRange,
-  provider 
+  provider,
 }) {
   return {
     "@context": "https://schema.org",
     "@type": "Service",
-    "name": serviceName,
-    "description": description,
-    "provider": provider,
-    "areaServed": "ZA",
-    "offers": {
+    name: serviceName,
+    description,
+    provider,
+    areaServed: "ZA",
+    offers: {
       "@type": "Offer",
-      "price": priceRange
-    }
+      price: priceRange,
+    },
   };
 }

@@ -21,23 +21,25 @@ const {
   modifiedTime = null,
 } = Astro.props;
 
-const organizationSchema = jsonLDGenerator({
+const organizationSchema = jsonLDGenerator(siteData, {
   title,
   description,
   url,
   image,
   type,
-  services: siteData.services,
 });
-
-// Ensure jsonLDGenerator actually returns *object*, not string
-// If it returns a string, parse it
 
 const websiteSchema = generateWebSiteSchema({
-  url: import.meta.env.SITE,
-  searchUrl: `${import.meta.env.SITE}/search`,
+  url: siteData.url,
   name: siteData.title,
 });
+
+const twitterUrl = siteData.socialProfiles?.find(
+  (u) => u.includes("twitter.com") || u.includes("x.com"),
+);
+const twitterHandle = twitterUrl
+  ? `@${new URL(twitterUrl).pathname.split("/").filter(Boolean).pop()}`
+  : null;
 
 // Combine schema into one array
 const combinedSchema: any = [organizationSchema, websiteSchema];
@@ -102,8 +104,8 @@ const jsonLD = JSON.stringify(combinedSchema, null, 2);
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:site" content={siteData.social.twitter} />
-<meta name="twitter:creator" content={siteData.social.twitter} />
+{twitterHandle && <meta name="twitter:site" content={twitterHandle} />}
+{twitterHandle && <meta name="twitter:creator" content={twitterHandle} />}
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={`${url}${image.src}`} />
@@ -116,7 +118,6 @@ const jsonLD = JSON.stringify(combinedSchema, null, 2);
 <meta name="geo.position" content="-26.2041;28.0473" />
 <!-- Johannesburg coordinates -->
 <meta name="ICBM" content="-26.2041, 28.0473" />
-<meta name="revisit-after" content="7 days" />
 
 <!-- Structured Data -->
 <script is:inline type="application/ld+json" set:html={jsonLD} />

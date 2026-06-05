@@ -1,36 +1,114 @@
 {
-  "title": "Fayda Studio — Modern Web Development Agency",
-  "description": "We build fast, modern, conversion-focused websites and full-stack solutions using Modern Technology. Web development agency based in South Africa.",
-  "keywords": "web development South Africa, website agency, React development, Next.js, Astro, conversion-focused websites, website design, design websites, website development, website coding, modern website, 3d websites",
+  "title": "Fayda Studio — Web Development Agency in Durban",
+  "description": "Fayda Studio is a Durban-based web development agency building fast, conversion-focused websites and web apps for South African SMEs and startups. Custom-coded in Astro, Next.js, and React.",
+  "keywords": "web development Durban, web development South Africa, website agency Durban, website design South Africa, Astro development, Next.js agency, React development, conversion-focused websites, UI/UX design South Africa, e-commerce development Durban, web app development",
+  "url": "https://fayda.studio",
   "image": {
-    "src": "/images/og-preview.avif",
-    "alt": "Fayda Studio - Web Development Agency",
+    "src": "/images/og-image.png",
+    "alt": "Fayda Studio — Web Development Agency in Durban",
     "width": 1200,
     "height": 630
+  },
+  "logo": {
+    "src": "/images/logo.png",
+    "alt": "Fayda Studio"
   },
   "company": {
     "name": "Fayda Studio",
     "legalName": "Fayda Studio (Pty) Ltd",
-    "founder": "Sahil Jada",
-    "foundingDate": "2025"
+    "founder": {
+      "name": "Sahil Jada",
+      "url": "https://www.linkedin.com/in/sahiljada/",
+      "sameAs": [
+        "https://www.linkedin.com/in/sahiljada/"
+      ]
+    },
+    "foundingDate": "2025-01-01",
+    "email": "hello@fayda.studio",
+    "phone": "+27721356764",
+    "address": {
+      "addressLocality": "Durban",
+      "addressRegion": "KwaZulu Natal",
+      "addressCountry": "ZA"
+    },
+    "areaServed": [
+      "Johannesburg",
+      "Cape Town",
+      "Durban",
+      "Pretoria",
+      "ZA"
+    ],
+    "knowsAbout": [
+      "Astro",
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Node.js",
+      "UI/UX Design",
+      "Web Performance",
+      "SEO"
+    ]
   },
-  "social": {
-    "twitter": "",
-    "linkedin": "",
-    "github": "",
-    "instagram": ""
-  },
+  "socialProfiles": [
+    "https://www.linkedin.com/company/fayda-studio/",
+    "https://www.linkedin.com/in/sahiljada/"
+  ],
   "services": [
-    "Website Revamp",
-    "Website Redesign",
-    "Website Design",
-    "UI/UX Design",
-    "Branding",
-    "Website Development",
-    "E-commerce Solutions",
-    "Web Application Development",
-    "SEO Optimization",
-    "Website Maintenance",
-    "Performance Optimization"
+    {
+      "name": "Website Revamp",
+      "slug": "website-revamp",
+      "description": "Redesign and rebuild of outdated websites to improve speed, conversion, and SEO."
+    },
+    {
+      "name": "Website Redesign",
+      "slug": "website-redesign",
+      "description": "Strategic redesign focused on user experience and conversion paths."
+    },
+    {
+      "name": "Website Design",
+      "slug": "website-design",
+      "description": "Custom website design tailored to your brand and goals."
+    },
+    {
+      "name": "UI/UX Design",
+      "slug": "ui-ux-design",
+      "description": "User research, wireframing, and interface design for web products."
+    },
+    {
+      "name": "Branding",
+      "slug": "branding",
+      "description": "Brand identity, visual systems, and design tokens."
+    },
+    {
+      "name": "Website Development",
+      "slug": "website-development",
+      "description": "Custom-coded, high-performance websites built with Astro, Next.js, and React."
+    },
+    {
+      "name": "E-commerce Solutions",
+      "slug": "ecommerce",
+      "description": "Online stores built for performance and conversion."
+    },
+    {
+      "name": "Web Application Development",
+      "slug": "web-apps",
+      "description": "Full-stack web applications and MVPs."
+    },
+    {
+      "name": "SEO Optimization",
+      "slug": "seo",
+      "description": "Technical SEO, on-page optimization, and content strategy."
+    },
+    {
+      "name": "Website Maintenance",
+      "slug": "maintenance",
+      "description": "Ongoing updates, security, and performance monitoring."
+    },
+    {
+      "name": "Performance Optimization",
+      "slug": "performance",
+      "description": "Core Web Vitals, asset optimization, and runtime tuning."
+    }
   ]
 }

@@ -16,6 +16,7 @@ const {
 	title = siteData.title,
 	description = siteData.description,
 	image = siteData.image,
+	type = "Organization",
 } = Astro.props;
 ---
 
@@ -35,10 +36,8 @@ const {
 		/>
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<meta name="description" content={description} />
-		<title>{title}</title>
 
-		<Seo {title} {description} url={Astro.url} {image} />
+		<Seo {title} {description} url={Astro.url} {image} {type} />
 
 		<ClientRouter />
 		<PostHog />

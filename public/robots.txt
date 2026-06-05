@@ -41,4 +41,4 @@ Disallow: /
 User-agent: CloudflareBrowserRenderingCrawler
 Disallow: /
 
-Sitemap: https://fayda.studio/sitemap-index.xml
+Sitemap: https://fayda.studio/sitemap-0.xml
