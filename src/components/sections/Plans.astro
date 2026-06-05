@@ -88,6 +88,11 @@ import UpRight from "@icons/UpRight.svg";
                 buttons.forEach((b) => {
                     b.setAttribute("data-active", b === btn ? "true" : "false");
                 });
+
+                window.posthog?.capture("plan_category_switched", {
+                    category: target,
+                    label: (btn as HTMLElement).innerText.trim(),
+                });
             });
         });
     });

@@ -60,7 +60,22 @@ const {
             label="Contact for Pricing"
             href={'/contact'}
             variant="outline"
-            class="w-full"
+            class="w-full plan-cta-btn"
+            data-plan-title={title}
+            data-plan-popular={popular ? "true" : "false"}
         />
     </div>
 </div>
+
+<script>
+    document.addEventListener("astro:page-load", () => {
+        document.querySelectorAll(".plan-cta-btn").forEach((btn) => {
+            btn.addEventListener("click", () => {
+                window.posthog?.capture("plan_cta_clicked", {
+                    plan_title: (btn as HTMLElement).dataset.planTitle,
+                    is_popular: (btn as HTMLElement).dataset.planPopular === "true",
+                });
+            });
+        });
+    });
+</script>
